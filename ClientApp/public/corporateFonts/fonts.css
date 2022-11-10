@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "helioscond";
+    src: url('helioscond-webfont.woff') format('woff'),
+    url('helioscond-webfont.ttf') format('truetype'),
+    url('helioscond-webfont.svg#helioscondregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "helioscondblack";
+    src: url('helioscondblack-webfont.eot');
+    src: url('helioscondblack-webfont.eot?#iefix') format('embedded-opentype'),
+    url('helioscondblack-webfont.woff') format('woff'),
+    url('helioscondblack-webfont.ttf') format('truetype'),
+    url('helioscondblack-webfont.svg#helioscondblackregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "helioscond";
+    src: url('he_cn__b-webfont.woff') format('woff'),
+    url('he_cn__b-webfont.ttf') format('truetype'),
+    url('he_cn__b-webfont.svg#helioscondregular') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
