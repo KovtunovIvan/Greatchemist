@@ -22,7 +22,7 @@ namespace Tmp
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<StaffReserveContect>(options =>
+            services.AddDbContext<GreatChemistContext>(options =>
                 options.UseSqlServer(connection));
             services.AddControllersWithViews();
 

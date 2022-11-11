@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'ResphektRegular';
+    src: url('fonts/ResphektRegular.eot');
+    src: url('fonts/ResphektRegular.eot') format('embedded-opentype'),
+         url('fonts/ResphektRegular.woff2') format('woff2'),
+         url('fonts/ResphektRegular.woff') format('woff'),
+         url('fonts/ResphektRegular.ttf') format('truetype'),
+         url('fonts/ResphektRegular.svg#ResphektRegular') format('svg');
+}

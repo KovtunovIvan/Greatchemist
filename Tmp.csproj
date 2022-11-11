@@ -50,9 +50,6 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\public\instruction\" />
-    <Folder Include="ClientApp\src\components\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -1,12 +1,14 @@
 <template>
-    <div :key="reloadPage">
-        <v-app id="inspire">
+    <div class="wh100">
+        <v-app id="inspire" style="background: transparent;">
+            <v-main>
+                <!--<v-app id="inspire">
             <v-app-bar color="#f5f5f5"
                        fixed
                        app>
                 <v-toolbar-title>
                     <router-link :to="'/'" class="appTitle">
-                        Резерв кадров
+                        Великий химик
                     </router-link>
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -33,10 +35,10 @@
                 <v-list-item>
                     <v-list-item-content>
                         <v-list-item-title class="title">
-                            Администрирование
+                            Меню
                         </v-list-item-title>
-                        <v-list-item-subtitle>
-                            резерва кадров
+                        <v-list-item-subtitle v-if="$store.state.user">
+                            {{$store.state.user.surname}} {{$store.state.user.name}}
                         </v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
@@ -59,10 +61,12 @@
                     </v-list-item>
                 </v-list>
             </v-navigation-drawer>
+        </v-app>-->
+                <router-view></router-view>
+                <app-snackbar></app-snackbar>
+            </v-main>
         </v-app>
-
-        <app-snackbar></app-snackbar>
-    </div>
+</div>
 </template>
 
 <script>
@@ -70,10 +74,60 @@
         name: 'App',
 
         data: () => ({
-            right: false,
+            /*right: false,*/
         }),
 
-        methods: {},
+        methods: {
+            //isAdmin() {
+            //    this.$http
+            //        .get(this.$store.state.baseUrl + `api/user/IsAdmin?password=` + this.$store.state.password + `&datetime=` + new Date().getMilliseconds())
+            //        .then(response => {
+            //            this.$store.state.isAdmin = response.data
+            //            if (!response.data) {
+            //                this.$store.state.snackbarShow = false
+            //                this.$store.state.snackbarColor = "#ff5252"
+            //                this.$store.state.snackbarText = "Введен неверный пароль"
+            //                this.$store.state.snackbarShow = true
+            //            }
+            //        })
+            //        .catch(e => {
+            //            this.$store.state.snackbarShow = false
+            //            this.$store.state.snackbarColor = "#ff5252"
+            //            this.$store.state.snackbarText = "Ошибка проверки администратора"
+            //            this.$store.state.snackbarShow = true
+
+            //            console.log(e)
+            //        });
+            //},
+            comeIn() {
+                    let u = {
+                        email: this.$store.state.email,
+                        password: this.$store.state.password
+                    }
+                    this.$http
+                        .post(this.$store.state.baseUrl + `api/user/authorization`, u)
+                        .then(response => {
+                            if (this.$store.state.isAuthorized != response.data) {
+                                this.$store.state.isAuthorized = response.data
+                            }
+
+                            if (!response.data) {
+                                this.$store.state.snackbarShow = false
+                                this.$store.state.snackbarColor = "#ff5252"
+                                this.$store.state.snackbarText = "Введены неверные e-mail или пароль"
+                                this.$store.state.snackbarShow = true
+                            }
+                        })
+                        .catch(e => {
+                            this.$store.state.snackbarShow = false
+                            this.$store.state.snackbarColor = "#ff5252"
+                            this.$store.state.snackbarText = "Ошибка авторизации"
+                            this.$store.state.snackbarShow = true
+
+                            console.log(e)
+                        });
+            },
+        },
 
         created() {
             if (this.$store.state.baseUrl[this.$store.state.baseUrl.length - 1] != '/') {
@@ -81,12 +135,27 @@
             }
         },
 
-        watch: {},
+        watch: {
+            '$store.state.email'() {
+                this.comeIn();
+            },
+            '$store.state.isAuthorized'() {
+                this.comeIn();
+            },
+        },
     };
 </script>
 
 <style>
     html {
+        height: 100%;
+        overflow: hidden !important;
+        width: 100%;
+        background-image: url('assets/bkg1.png');
+        background-size:cover;
+    }
+
+    body, .wh100 {
         height: 100%;
         overflow: hidden !important;
         width: 100%;
@@ -102,7 +171,7 @@
         display: table;
     }
 
-    .appTitle {
+    /*.appTitle {
         font: 23px/130% "helioscond","Segoe Ui Light","Segoe Ui", "Segoe",Tahoma,Helvetica,Arial,sans-serif;
         color: rgba(0,0,0,.8) !important;
         text-decoration: none;
@@ -177,7 +246,7 @@
     .field-wrap {
         float: left;
         width: 70%;
-    }
+    }*/
 
     .v-input--checkbox, .v-input--checkbox .v-label {
         margin: 0px !important;
