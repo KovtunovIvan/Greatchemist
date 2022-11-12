@@ -9,9 +9,11 @@ import vuetify from './plugins/vuetify';
 
 import Snackbar from './components/snackbar.vue'
 import DatePicker from './components/datePicker.vue'
+import TaskType1 from './components/taskType1.vue'
 
 Vue.component('app-snackbar', Snackbar)
 Vue.component('app-date-picker', DatePicker)
+Vue.component('app-task-type1', TaskType1)
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios

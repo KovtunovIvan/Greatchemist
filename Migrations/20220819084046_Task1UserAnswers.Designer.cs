@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tmp.Models;
 
 namespace Tmp.Migrations
 {
     [DbContext(typeof(GreatChemistContext))]
-    partial class GreatChemistContextModelSnapshot : ModelSnapshot
+    [Migration("20220819084046_Task1UserAnswers")]
+    partial class Task1UserAnswers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,42 +57,12 @@ namespace Tmp.Migrations
                         .HasMaxLength(320)
                         .HasColumnType("nvarchar(320)");
 
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Iterations");
-                });
-
-            modelBuilder.Entity("Tmp.Models.QuestionType1", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Btn1")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Btn2")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("QuestionLink")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("RightBtn")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Task")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("QuestionsType1");
                 });
 
             modelBuilder.Entity("Tmp.Models.Task", b =>
@@ -112,31 +84,58 @@ namespace Tmp.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("Tmp.Models.TaskTime", b =>
+            modelBuilder.Entity("Tmp.Models.Task1Question", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Btn1")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
-                    b.Property<int>("IterationId")
-                        .HasColumnType("int");
+                    b.Property<string>("Btn2")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
-                    b.Property<int>("Parallel")
-                        .HasColumnType("int");
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("QuestionLink")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("TaskId")
+                    b.Property<int>("RightBtn")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("TaskTimes");
+                    b.ToTable("Task1Questions");
+                });
+
+            modelBuilder.Entity("Tmp.Models.Task1UserAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IterationId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Parallel")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserAnswer")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Task1UserAnswers");
                 });
 
             modelBuilder.Entity("Tmp.Models.User", b =>
@@ -177,59 +176,6 @@ namespace Tmp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Tmp.Models.UserAnswerType1", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IterationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Parallel")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserAnswer")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserAnswersType1");
-                });
-
-            modelBuilder.Entity("Tmp.Models.UserAnswersType1withRights", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IterationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Parallel")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RightBtn")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Task")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserAnswer")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToView("UserAnswersType1withRights");
                 });
 #pragma warning restore 612, 618
         }
