@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tmp.Models;
 
 namespace Tmp.Migrations
 {
     [DbContext(typeof(GreatChemistContext))]
-    partial class GreatChemistContextModelSnapshot : ModelSnapshot
+    [Migration("20220821082723_Type4")]
+    partial class Type4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -250,28 +252,6 @@ namespace Tmp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("QuestionsType4");
-                });
-
-            modelBuilder.Entity("Tmp.Models.QuestionType5", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("QuestionLink")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("Task")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("QuestionsType5");
                 });
 
             modelBuilder.Entity("Tmp.Models.Task", b =>

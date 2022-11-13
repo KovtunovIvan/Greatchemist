@@ -116,6 +116,7 @@
                                 this.$store.state.snackbarColor = "#ff5252"
                                 this.$store.state.snackbarText = "Введены неверные e-mail или пароль"
                                 this.$store.state.snackbarShow = true
+                                this.$router.push({ path: '/SignIn' })
                             }
                         })
                         .catch(e => {
@@ -123,6 +124,7 @@
                             this.$store.state.snackbarColor = "#ff5252"
                             this.$store.state.snackbarText = "Ошибка авторизации"
                             this.$store.state.snackbarShow = true
+                            this.$router.push({ path: '/SignIn' })
 
                             console.log(e)
                         });
