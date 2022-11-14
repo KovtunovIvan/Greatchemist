@@ -20,6 +20,12 @@
                        @click="addAnswer(2)">
                     {{question.btn2}}
                 </v-btn>
+                <v-btn x-large
+                       color="#FFC702"
+                       class="answerButton"
+                       @click="addAnswer(3)">
+                    {{question.btn3}}
+                </v-btn>
             </div>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && !isTesting">
@@ -40,7 +46,7 @@
 
 <script>
     export default {
-        name: 'TaskType1',
+        name: 'TaskType4',
 
         props: {
             questions: {
@@ -123,7 +129,7 @@
                     }
 
                     this.$http
-                        .post(this.$store.state.baseUrl + `api/test/addAnswersType1`, res)
+                        .post(this.$store.state.baseUrl + `api/test/addAnswersType4`, res)
                         .then(response => {
                             this.commonCount = this.$store.state.answers.length
                             this.rightCount = response.data

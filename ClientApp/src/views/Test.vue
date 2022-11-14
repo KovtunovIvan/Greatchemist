@@ -11,11 +11,35 @@
                 <p class="testText">{{task.description}}</p>
             </div>
 
-            <app-task-type1 v-if="loaded && passingTest && ($store.state.currentTask == 1 || $store.state.currentTask == 2 || $store.state.currentTask == 3 || $store.state.currentTask == 4)"
-                       :questions="questions"
-                       :iterationId="$store.state.iteration"
-                       @testEnded="startNewTask()"
-                       :key="$store.state.currentTask"></app-task-type1>
+            <app-task-type1 v-if="loaded && passingTest && ($store.state.currentTask == 1 || $store.state.currentTask == 2 || $store.state.currentTask == 3 || $store.state.currentTask == 4 || $store.state.currentTask == 7 || $store.state.currentTask == 9 || $store.state.currentTask == 10 || $store.state.currentTask == 11)"
+                            :questions="questions"
+                            :iterationId="$store.state.iteration"
+                            @testEnded="startNewTask()"
+                            :key="$store.state.currentTask"></app-task-type1>
+
+            <app-task-type2 v-if="loaded && passingTest && ($store.state.currentTask == 5)"
+                            :questions="questions"
+                            :iterationId="$store.state.iteration"
+                            @testEnded="startNewTask()"
+                            :key="$store.state.currentTask"></app-task-type2>
+
+            <app-task-type3 v-if="loaded && passingTest && ($store.state.currentTask == 6)"
+                            :questions="questions"
+                            :iterationId="$store.state.iteration"
+                            @testEnded="startNewTask()"
+                            :key="$store.state.currentTask"></app-task-type3>
+
+            <app-task-type4 v-if="loaded && passingTest && ($store.state.currentTask == 8 || $store.state.currentTask == 12 || $store.state.currentTask == 13)"
+                            :questions="questions"
+                            :iterationId="$store.state.iteration"
+                            @testEnded="startNewTask()"
+                            :key="$store.state.currentTask"></app-task-type4>
+
+            <app-task-type5 v-if="loaded && passingTest && ($store.state.currentTask == 14 || $store.state.currentTask == 15)"
+                            :questions="questions"
+                            :iterationId="$store.state.iteration"
+                            @testEnded="startNewTask()"
+                            :key="$store.state.currentTask"></app-task-type5>
         </div>
         <div class="testButtonsWrap" v-if="loaded && !passingTest">
             <v-btn x-large
@@ -69,6 +93,39 @@
                         break
                     case 4:
                         db = 'GetQuestionsType1'
+                        break
+                    case 5:
+                        db = 'GetQuestionsType2'
+                        break
+                    case 6:
+                        db = 'GetQuestionsType3'
+                        break
+                    case 7:
+                        db = 'GetQuestionsType1'
+                        break
+                    case 8:
+                        db = 'GetQuestionsType4'
+                        break
+                    case 9:
+                        db = 'GetQuestionsType1'
+                        break
+                    case 10:
+                        db = 'GetQuestionsType1'
+                        break
+                    case 11:
+                        db = 'GetQuestionsType1'
+                        break
+                    case 12:
+                        db = 'GetQuestionsType4'
+                        break
+                    case 13:
+                        db = 'GetQuestionsType4'
+                        break
+                    case 14:
+                        db = 'GetQuestionsType5'
+                        break
+                    case 15:
+                        db = 'GetQuestionsType5'
                         break
                 }
 
@@ -171,6 +228,7 @@
         padding: 5%;
         width: 80%;
         height: 50%;
+        min-height: 510px;
         border-radius: 26px;
         text-align: center;
     }
@@ -186,5 +244,11 @@
         padding: 30px;
         display: flex;
         justify-content: space-between;
+    }
+
+    @media only screen and (max-width: 850px) {
+        .testWrap {
+            height: 70%;
+        }
     }
 </style>

@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace Tmp.Models
 {
-    public class QuestionType1DTO
+    //12,13
+    public class QuestionType5
     {
         public int Id { get; set; }
         [MaxLength(100)]
         public string QuestionLink { get; set; }
-        [MaxLength(100)]
-        public string Btn1 { get; set; }
-        [MaxLength(100)]
-        public string Btn2 { get; set; }
         public int Task { get; set; }
+        public bool Deleted { get; set; }
 
     }
 }

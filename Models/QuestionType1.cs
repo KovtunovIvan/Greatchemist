@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tmp.Models
 {
+    //1,2,3,4,7,9,10,11
     public class QuestionType1
     {
         public int Id { get; set; }

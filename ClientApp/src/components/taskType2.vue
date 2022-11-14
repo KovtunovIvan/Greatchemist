@@ -6,19 +6,37 @@
                                  :size="70"></v-progress-circular>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && isTesting">
-            <img :src="`../images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
-            <div class="answerButtonsWrap">
+            <img :src="`../images/` + question.questionLink" style="max-width: 100%; max-height: 60%;" />
+            <div class="answerButtonsWrap2">
                 <v-btn x-large
                        color="#FFC702"
                        class="answerButton"
-                       @click="addAnswer(1)">
+                       @click="addAnswer(1)"
+                       style="width:145px;">
                     {{question.btn1}}
                 </v-btn>
                 <v-btn x-large
                        color="#FFC702"
                        class="answerButton"
-                       @click="addAnswer(2)">
+                       @click="addAnswer(2)"
+                       style="width:145px;">
                     {{question.btn2}}
+                </v-btn>
+            </div>
+            <div class="answerButtonsWrap">
+                <v-btn x-large
+                       color="#FFC702"
+                       class="answerButton"
+                       @click="addAnswer(3)"
+                       style="width:145px;">
+                    {{question.btn3}}
+                </v-btn>
+                <v-btn x-large
+                       color="#FFC702"
+                       class="answerButton"
+                       @click="addAnswer(4)"
+                       style="width:145px;">
+                    {{question.btn4}}
                 </v-btn>
             </div>
         </div>
@@ -40,7 +58,7 @@
 
 <script>
     export default {
-        name: 'TaskType1',
+        name: 'TaskType2',
 
         props: {
             questions: {
@@ -123,7 +141,7 @@
                     }
 
                     this.$http
-                        .post(this.$store.state.baseUrl + `api/test/addAnswersType1`, res)
+                        .post(this.$store.state.baseUrl + `api/test/addAnswersType2`, res)
                         .then(response => {
                             this.commonCount = this.$store.state.answers.length
                             this.rightCount = response.data
@@ -152,6 +170,14 @@
     .answerButtonsWrap {
         position: absolute;
         bottom: 0px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .answerButtonsWrap2 {
+        position: absolute;
+        bottom: 70px;
         width: 100%;
         display: flex;
         justify-content: center;
