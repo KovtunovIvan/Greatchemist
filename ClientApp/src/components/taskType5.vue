@@ -7,24 +7,18 @@
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && isTesting">
             <img :src="`../images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
+            
             <div class="answerButtonsWrap">
                 <v-btn x-large
                        color="#FFC702"
                        class="answerButton"
-                       @click="addAnswer(1)">
-                    {{question.btn1}}
-                </v-btn>
-                <v-btn x-large
-                       color="#FFC702"
-                       class="answerButton"
-                       @click="addAnswer(2)">
-                    {{question.btn2}}
+                       @click="addAnswer()">
+                    Завершить
                 </v-btn>
             </div>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && !isTesting">
             <p class="testText">Вы успешно завершили задание {{$store.state.currentTask}}</p>
-            <p class="testText">Ваш резутат: {{rightCount}} из {{commonCount}}</p>
             <p class="testText">Затраченное время: {{timeFunc}}</p>
             <div class="answerButtonsWrap">
                 <v-btn x-large
@@ -40,7 +34,7 @@
 
 <script>
     export default {
-        name: 'TaskType1',
+        name: 'TaskType5',
 
         props: {
             questions: {
@@ -59,9 +53,10 @@
             startTime: new Date(),
             endTime: new Date(),
             isTesting: false,
-            commonCount: 0,
-            rightCount: 0,
             loaded: false,
+
+            timer: 0,
+            time: 0,
         }),
 
         computed: {
@@ -87,11 +82,29 @@
                 this.$store.state.answers = []
                 this.startTime = new Date()
                 this.isTesting = true
+                if (this.$store.state.currentTask == 14) {
+                    this.time = 600000
+                } else if (this.$store.state.currentTask == 15) {
+                    this.time = 1200000
+                }
                 this.loaded = true
+
+                this.countdown();
+                
+            },
+
+            countdown() {
+                this.time--;
+                if (this.time < 0) {
+                    this.addAnswer()
+                }
+                else {
+                    this.timer = setTimeout(this.countdown, 1000);
+                }
             },
 
             restart() {
-                if (this.$store.state.parallel == 2) {
+                if (this.$store.state.parallel == 1) {
                     this.$emit("testEnded")
                 } else {
                     this.$store.state.parallel = this.$store.state.parallel + 1
@@ -99,46 +112,33 @@
                 }
             },
 
-            addAnswer(number) {
-                let a = {
-                    QuestionId: this.question.id,
-                    UserAnswer: number,
-                    IterationId: this.iterationId,
-                    Parallel: this.$store.state.parallel
+            addAnswer() {
+                this.isTesting = false
+                this.loaded = false
+                this.endTime = new Date()
+
+                let res = {
+                    startTime: this.startTime,
+                    endTime: this.endTime,
+                    task: this.$store.state.currentTask,
+                    iterationId: this.iterationId,
+                    parallel: 1,
                 }
-                this.$store.state.answers.push(a)
-                if (this.id < this.questions.length - 1) {
-                    this.id++
-                    this.question = this.questions[this.id]
-                } else {
-                    this.isTesting = false
-                    this.loaded = false
-                    this.endTime = new Date()
 
-                    let res = {
-                        startTime: this.startTime,
-                        endTime: this.endTime,
-                        answers: this.$store.state.answers,
-                        task: this.$store.state.currentTask
-                    }
+                this.$http
+                    .post(this.$store.state.baseUrl + `api/test/addAnswersType5`, res)
+                    .then(response => {
+                        this.loaded = true
+                    })
+                    .catch(e => {
+                        this.$store.state.snackbarShow = false
+                        this.$store.state.snackbarColor = "#ff5252"
+                        this.$store.state.snackbarText = "Ошибка сохранения ответов"
+                        this.$store.state.snackbarShow = true
+                        this.$router.push({ path: '/' })
 
-                    this.$http
-                        .post(this.$store.state.baseUrl + `api/test/addAnswersType1`, res)
-                        .then(response => {
-                            this.commonCount = this.$store.state.answers.length
-                            this.rightCount = response.data
-                            this.loaded = true
-                        })
-                        .catch(e => {
-                            this.$store.state.snackbarShow = false
-                            this.$store.state.snackbarColor = "#ff5252"
-                            this.$store.state.snackbarText = "Ошибка сохранения ответов"
-                            this.$store.state.snackbarShow = true
-                            this.$router.push({ path: '/' })
-
-                            console.log(e)
-                        });
-                }
+                        console.log(e)
+                    });
             },
         },
 
@@ -147,24 +147,3 @@
         },
     };
 </script>
-
-<style>
-    .answerButtonsWrap {
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .answerButton {
-        display: block;
-        font-weight: 900;
-        margin: 0 10px;
-    }
-
-    .testText{
-        font-size: 20px;
-    }
-</style>
-
