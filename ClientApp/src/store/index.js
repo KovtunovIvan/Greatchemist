@@ -14,5 +14,10 @@ export default new Vuex.Store({
         password: null,
         isAuthorized: false,
         isAdmin: false,
+        iteration: 0,
+        currentTask: 0,
+
+        answers: [],
+        parallel: 1,
     },
 })

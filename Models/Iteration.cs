@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Tmp.Models
 {
-    public class MainHand
+    public class Iteration
     {
         public int Id { get; set; }
-        [MaxLength(6)]
-        public string Title { get; set; }
+        [MaxLength(320)]
+        public string Email { get; set; }
+        public DateTime Date { get; set; }
         public bool Deleted { get; set; }
 
     }
