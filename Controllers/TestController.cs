@@ -179,6 +179,40 @@ namespace Tmp.Controllers
             return Ok();
         }
 
+        [HttpPost("[action]")]
+        public IActionResult addAnswersType6([FromBody] UserAnswerType6DTO user)
+        {
+            int IterationId = 0;
+            int Parallel = 0;
+            int Task = user.Task;
+
+            foreach (UserAnswerType6 ans in user.Answers)
+            {
+                db.UserAnswersType6.Add(ans);
+                IterationId = ans.IterationId;
+                Parallel = ans.Parallel;
+            }
+
+            TaskTime tt = new TaskTime();
+            tt.IterationId = IterationId;
+            tt.Parallel = Parallel;
+            tt.TaskId = Task;
+            tt.StartTime = user.StartTime;
+            tt.EndTime = user.EndTime;
+            db.TaskTimes.Add(tt);
+
+            db.SaveChanges();
+
+            int RightCount = db.UserAnswersType6withRights
+                .Where(a => a.IterationId == IterationId &&
+                a.Parallel == Parallel &&
+                a.Task == Task &&
+                a.UserAnswer1 == a.Right1 &&
+                a.UserAnswer2 == a.Right2).Count();
+
+            return Ok(RightCount);
+        }
+
         [HttpGet("[action]")]
         public Models.Task GetTask(int id)
         {
@@ -276,6 +310,14 @@ namespace Tmp.Controllers
         public IEnumerable<QuestionType5> GetQuestionsType5(int task)
         {
             IEnumerable<QuestionType5> questions = db.QuestionsType5
+                .Where(a => a.Task == task && !a.Deleted).ToList();
+            return questions;
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<QuestionType6> GetQuestionsType6(int task)
+        {
+            IEnumerable<QuestionType6> questions = db.QuestionsType6
                 .Where(a => a.Task == task && !a.Deleted).ToList();
             return questions;
         }

@@ -14,6 +14,7 @@ import TaskType2 from './components/taskType2.vue'
 import TaskType3 from './components/taskType3.vue'
 import TaskType4 from './components/taskType4.vue'
 import TaskType5 from './components/taskType5.vue'
+import TaskType6 from './components/taskType6.vue'
 
 Vue.component('app-snackbar', Snackbar)
 Vue.component('app-date-picker', DatePicker)
@@ -22,6 +23,7 @@ Vue.component('app-task-type2', TaskType2)
 Vue.component('app-task-type3', TaskType3)
 Vue.component('app-task-type4', TaskType4)
 Vue.component('app-task-type5', TaskType5)
+Vue.component('app-task-type6', TaskType6)
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
