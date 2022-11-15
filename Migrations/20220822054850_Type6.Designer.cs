@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tmp.Models;
 
 namespace Tmp.Migrations
 {
     [DbContext(typeof(GreatChemistContext))]
-    partial class GreatChemistContextModelSnapshot : ModelSnapshot
+    [Migration("20220822054850_Type6")]
+    partial class Type6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -296,10 +298,10 @@ namespace Tmp.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<float>("Right1")
+                    b.Property<float?>("Right1")
                         .HasColumnType("real");
 
-                    b.Property<float>("Right2")
+                    b.Property<float?>("Right2")
                         .HasColumnType("real");
 
                     b.Property<int>("Task")
@@ -508,10 +510,10 @@ namespace Tmp.Migrations
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
-                    b.Property<float>("UserAnswer1")
+                    b.Property<float?>("UserAnswer1")
                         .HasColumnType("real");
 
-                    b.Property<float>("UserAnswer2")
+                    b.Property<float?>("UserAnswer2")
                         .HasColumnType("real");
 
                     b.HasKey("Id");

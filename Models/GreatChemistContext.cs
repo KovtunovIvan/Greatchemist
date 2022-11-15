@@ -17,10 +17,12 @@ namespace Tmp.Models
         public DbSet<QuestionType3> QuestionsType3 { get; set; }
         public DbSet<QuestionType4> QuestionsType4 { get; set; }
         public DbSet<QuestionType5> QuestionsType5 { get; set; }
+        public DbSet<QuestionType6> QuestionsType6 { get; set; }
         public DbSet<UserAnswerType1> UserAnswersType1 { get; set; }
         public DbSet<UserAnswerType2> UserAnswersType2 { get; set; }
         public DbSet<UserAnswerType3> UserAnswersType3 { get; set; }
         public DbSet<UserAnswerType4> UserAnswersType4 { get; set; }
+        public DbSet<UserAnswerType6> UserAnswersType6 { get; set; }
         public DbSet<TaskTime> TaskTimes { get; set; }
         
 
@@ -28,6 +30,7 @@ namespace Tmp.Models
         public DbSet<UserAnswersType2withRights> UserAnswersType2withRights { get; set; }
         public DbSet<UserAnswersType3withRights> UserAnswersType3withRights { get; set; }
         public DbSet<UserAnswersType4withRights> UserAnswersType4withRights { get; set; }
+        public DbSet<UserAnswersType6withRights> UserAnswersType6withRights { get; set; }
         public GreatChemistContext(DbContextOptions<GreatChemistContext> options)
             : base(options)
         {
@@ -50,6 +53,10 @@ namespace Tmp.Models
             modelBuilder
                 .Entity<UserAnswersType4withRights>()
                 .ToView(nameof(UserAnswersType4withRights))
+                .HasKey(u => new { u.Id });
+            modelBuilder
+                .Entity<UserAnswersType6withRights>()
+                .ToView(nameof(UserAnswersType6withRights))
                 .HasKey(u => new { u.Id });
         }
     }

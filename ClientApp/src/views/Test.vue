@@ -40,6 +40,12 @@
                             :iterationId="$store.state.iteration"
                             @testEnded="startNewTask()"
                             :key="$store.state.currentTask"></app-task-type5>
+
+            <app-task-type6 v-if="loaded && passingTest && ($store.state.currentTask == 16 || $store.state.currentTask == 17)"
+                            :questions="questions"
+                            :iterationId="$store.state.iteration"
+                            @testEnded="startNewTask()"
+                            :key="$store.state.currentTask"></app-task-type6>
         </div>
         <div class="testButtonsWrap" v-if="loaded && !passingTest">
             <v-btn x-large
@@ -75,7 +81,19 @@
                 this.loaded = false
                 this.$store.state.parallel = 1
                 this.$store.state.currentTask = this.$store.state.currentTask + 1
-                this.getTask()
+                if (this.$store.state.currentTask == 18) {
+                    this.endTask()
+                } else {
+                    this.getTask()
+                }
+            },
+
+            endTask() {
+                this.$store.state.snackbarShow = false
+                this.$store.state.snackbarColor = "#4caf50"
+                this.$store.state.snackbarText = "Вы успешно прошли тестирование"
+                this.$store.state.snackbarShow = true
+                this.$router.push({ path: '/Results/' })
             },
 
             getQuestions() {
@@ -126,6 +144,12 @@
                         break
                     case 15:
                         db = 'GetQuestionsType5'
+                        break
+                    case 16:
+                        db = 'GetQuestionsType6'
+                        break
+                    case 17:
+                        db = 'GetQuestionsType6'
                         break
                 }
 
