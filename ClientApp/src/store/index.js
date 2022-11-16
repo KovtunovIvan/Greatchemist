@@ -13,7 +13,8 @@ export default new Vuex.Store({
         email: null,
         password: null,
         isAuthorized: false,
-        isAdmin: false,
+        isTeacher: false,
+        isManager: false,
         iteration: 0,
         currentTask: 0,
 

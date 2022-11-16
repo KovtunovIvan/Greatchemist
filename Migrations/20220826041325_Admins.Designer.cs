@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tmp.Models;
 
 namespace Tmp.Migrations
 {
     [DbContext(typeof(GreatChemistContext))]
-    partial class GreatChemistContextModelSnapshot : ModelSnapshot
+    [Migration("20220826041325_Admins")]
+    partial class Admins
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -380,10 +382,10 @@ namespace Tmp.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsManager")
+                    b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsTeacher")
+                    b.Property<bool>("IsSuperAdmin")
                         .HasColumnType("bit");
 
                     b.Property<bool>("MainHand")

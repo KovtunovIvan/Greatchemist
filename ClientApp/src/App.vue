@@ -2,66 +2,6 @@
     <div class="wh100">
         <v-app id="inspire" style="background: transparent;">
             <v-main>
-                <!--<v-app id="inspire">
-            <v-app-bar color="#f5f5f5"
-                       fixed
-                       app>
-                <v-toolbar-title>
-                    <router-link :to="'/'" class="appTitle">
-                        Великий химик
-                    </router-link>
-                </v-toolbar-title>
-                <v-spacer></v-spacer>
-                <v-btn icon @click.stop="right = !right">
-                    <v-icon>mdi-menu</v-icon>
-                </v-btn>
-            </v-app-bar>
-            <v-main>
-                <div class="pageWrap">
-                    <div class="rightPart" id="rightPart">
-                        <div class="rightPartContentWrap">
-                            <div class="rightPartContent">
-                                <router-view></router-view>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </v-main>
-            <v-navigation-drawer right
-                                 temporary
-                                 v-model="right"
-                                 fixed>
-
-                <v-list-item>
-                    <v-list-item-content>
-                        <v-list-item-title class="title">
-                            Меню
-                        </v-list-item-title>
-                        <v-list-item-subtitle v-if="$store.state.user">
-                            {{$store.state.user.surname}} {{$store.state.user.name}}
-                        </v-list-item-subtitle>
-                    </v-list-item-content>
-                </v-list-item>
-
-                <v-divider></v-divider>
-
-                <v-list dense
-                        nav>
-                    <v-list-item link
-                                 router
-                                 to="/"
-                                 class="menu-point">
-                        <v-list-item-icon>
-                            <v-icon>mdi-home</v-icon>
-                        </v-list-item-icon>
-
-                        <v-list-item-content>
-                            <v-list-item-title>Домашняя</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </v-list>
-            </v-navigation-drawer>
-        </v-app>-->
                 <router-view></router-view>
                 <app-snackbar></app-snackbar>
             </v-main>
@@ -73,32 +13,9 @@
     export default {
         name: 'App',
 
-        data: () => ({
-            /*right: false,*/
-        }),
+        data: () => ({}),
 
         methods: {
-            //isAdmin() {
-            //    this.$http
-            //        .get(this.$store.state.baseUrl + `api/user/IsAdmin?password=` + this.$store.state.password + `&datetime=` + new Date().getMilliseconds())
-            //        .then(response => {
-            //            this.$store.state.isAdmin = response.data
-            //            if (!response.data) {
-            //                this.$store.state.snackbarShow = false
-            //                this.$store.state.snackbarColor = "#ff5252"
-            //                this.$store.state.snackbarText = "Введен неверный пароль"
-            //                this.$store.state.snackbarShow = true
-            //            }
-            //        })
-            //        .catch(e => {
-            //            this.$store.state.snackbarShow = false
-            //            this.$store.state.snackbarColor = "#ff5252"
-            //            this.$store.state.snackbarText = "Ошибка проверки администратора"
-            //            this.$store.state.snackbarShow = true
-
-            //            console.log(e)
-            //        });
-            //},
             comeIn() {
                     let u = {
                         email: this.$store.state.email,
@@ -107,11 +24,17 @@
                     this.$http
                         .post(this.$store.state.baseUrl + `api/user/authorization`, u)
                         .then(response => {
-                            if (this.$store.state.isAuthorized != response.data) {
-                                this.$store.state.isAuthorized = response.data
+                            if (this.$store.state.isAuthorized != response.data.isAuthorized) {
+                                this.$store.state.isAuthorized = response.data.isAuthorized
+                            }
+                            if (this.$store.state.isTeacher != response.data.isTeacher) {
+                                this.$store.state.isTeacher = response.data.isTeacher
+                            }
+                            if (this.$store.state.isManager != response.data.isManager) {
+                                this.$store.state.isManager = response.data.isManager
                             }
 
-                            if (!response.data) {
+                            if (!response.data.isAuthorized) {
                                 this.$store.state.snackbarShow = false
                                 this.$store.state.snackbarColor = "#ff5252"
                                 this.$store.state.snackbarText = "Введены неверные e-mail или пароль"
@@ -142,6 +65,12 @@
                 this.comeIn();
             },
             '$store.state.isAuthorized'() {
+                this.comeIn();
+            },
+            '$store.state.isTeacher'() {
+                this.comeIn();
+            },
+            '$store.state.isManager'() {
                 this.comeIn();
             },
         },

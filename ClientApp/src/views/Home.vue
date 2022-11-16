@@ -1,6 +1,8 @@
 <template>
     <div class="buttonsWrap">
         <button class="customBtn" @click="$router.push(`/About`)">О сайте</button>
+        <button class="customBtn" @click="$router.push(`/Admin`)" v-if="$store.state.isManager">Администрирование</button>
+        <button class="customBtn" @click="$router.push(`/Results`)" v-if="$store.state.isAuthorized">Результаты</button>
         <button class="customBtn" @click="$router.push(`/Test`)" v-if="$store.state.isAuthorized">Пройти тест</button>
         <button class="customBtn" @click="$router.push(`/SignUp`)" v-if="!$store.state.isAuthorized">Регистрация</button>
         <button class="customBtn" @click="$router.push(`/SignIn`)" v-if="!$store.state.isAuthorized">Авторизация</button>

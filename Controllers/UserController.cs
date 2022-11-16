@@ -21,21 +21,27 @@ namespace Tmp.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        //[HttpGet("[action]")]
-        //public IEnumerable<User> GetUsers()
-        //{
-        //    return db.Users
-        //        .Where(a => !a.Deleted)
-        //        .OrderBy(a => a.Patronymic)
-        //        .OrderBy(a => a.Name)
-        //        .OrderBy(a => a.Surname)
-        //        .ToList();
-        //}
-
         [HttpGet("[action]")]
-        public bool IsAdmin(string password)
+        public IEnumerable<UserDTO> GetUsers()
         {
-            return password == "GC2022" ? true : false;
+            IEnumerable<User> users = db.Users
+                .Where(a => !a.Deleted)
+                .OrderBy(a => a.GroupId)
+                .OrderBy(a => a.Name)
+                .ToList();
+            IEnumerable<UserDTO> result = users
+                .Select(c =>
+                     new UserDTO
+                     {
+                         Id = c.Id,
+                         Email = c.Email,
+                         Name = c.Name,
+                         GroupId = c.GroupId,
+                         IsTeacher = c.IsTeacher,
+                         IsManager = c.IsManager,
+                         Deleted = c.Deleted,
+                     });
+            return result;
         }
 
         [HttpPost("[action]")]
@@ -51,13 +57,26 @@ namespace Tmp.Controllers
         }
 
         [HttpPost("[action]")]
+        public IActionResult ChangeUser([FromBody] User user)
+        {
+            User u = db.Users.Find(user.Id);
+            u.IsManager = user.IsManager;
+            u.IsTeacher = user.IsTeacher;
+            u.Deleted = user.Deleted;
+            db.Update(u);
+            db.SaveChanges();
+            return Ok(user);
+        }
+
+        [HttpPost("[action]")]
         public IActionResult Authorization([FromBody] AuthorizationUserDTO user)
         {
-            if (db.Users.Where(a => !a.Deleted && a.Email == user.Email && a.Password == user.Password).Count() > 0)
+            List<User> users = db.Users.Where(a => !a.Deleted && a.Email == user.Email && a.Password == user.Password).ToList();
+            if (users.Count() > 0)
             {
-                return Ok(true);
+                return Ok(new { isAuthorized = true, isTeacher = users[0].IsTeacher, isManager = users[0].IsManager });
             }
-            return Ok(false);
+            return Ok(new { isAuthorized = false, isTeacher = false, isManager = false });
         }
     }
 }

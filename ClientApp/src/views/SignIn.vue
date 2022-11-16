@@ -85,11 +85,17 @@
                             if (this.$store.state.password != this.password) {
                                 this.$store.state.password = this.password
                             }
-                            if (this.$store.state.isAuthorized != response.data) {
-                                this.$store.state.isAuthorized = response.data
+                            if (this.$store.state.isAuthorized != response.data.isAuthorized) {
+                                this.$store.state.isAuthorized = response.data.isAuthorized
+                            }
+                            if (this.$store.state.isTeacher != response.data.isTeacher) {
+                                this.$store.state.isTeacher = response.data.isTeacher
+                            }
+                            if (this.$store.state.isManager != response.data.isManager) {
+                                this.$store.state.isManager = response.data.isManager
                             }
 
-                            if (!response.data) {
+                            if (!response.data.isAuthorized) {
                                 this.$store.state.snackbarShow = false
                                 this.$store.state.snackbarColor = "#ff5252"
                                 this.$store.state.snackbarText = "Введены неверные e-mail или пароль"
