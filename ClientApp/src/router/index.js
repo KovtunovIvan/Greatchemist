@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Admin from '../views/Admin.vue'
+import Groups from '../views/Groups.vue'
 import Results from '../views/Results.vue'
 import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
@@ -25,6 +26,11 @@ const routes = [
         path: '/admin',
         name: 'Admin',
         component: Admin
+    },
+    {
+        path: '/groups',
+        name: 'Groups',
+        component: Groups
     },
     {
         path: '/results',

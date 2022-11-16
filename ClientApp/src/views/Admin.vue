@@ -8,7 +8,7 @@
                                      color="#000"
                                      :size="70"></v-progress-circular>
             </div>
-            <v-simple-table v-else dense style="max-height: 80%; overflow-y: scroll;">
+            <v-simple-table v-else dense style="max-height: 80%; overflow-y: auto;">
                 <template v-slot:default>
                     <thead>
                         <tr>
@@ -34,9 +34,10 @@
                                             @click="changeUser(user)"></v-checkbox>
                             </td>
                             <td>
-                                <span @click="deleteUser(user)" style="cursor:pointer;">
-                                    Удалить
-                                </span>
+                                <v-btn icon
+                                       @click="deleteUser(user)">
+                                    <v-icon>mdi-delete</v-icon>
+                                </v-btn>
                             </td>
                         </tr>
                     </tbody>
@@ -86,8 +87,10 @@
             },
 
             deleteUser(user) {
-                user.deleted = true
-                this.changeUser(user)
+                if (confirm("Удалить пользователя?")) {
+                    user.deleted = true
+                    this.changeUser(user)
+                }
             },
 
             changeUser(user) {

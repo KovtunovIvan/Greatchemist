@@ -9,6 +9,8 @@ namespace Tmp.Models
     public class Group
     {
         public int Id { get; set; }
+        [MaxLength(320)]
+        public string Email { get; set; }
         [MaxLength(100)]
         public string Title { get; set; }
         public bool Deleted { get; set; }
