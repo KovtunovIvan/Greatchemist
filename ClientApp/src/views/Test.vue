@@ -99,62 +99,80 @@
             getQuestions() {
                 this.loaded = false
                 let db = ''
+                let count = 0
                 switch (this.$store.state.currentTask) {
                     case 1:
                         db = 'GetQuestionsType1'
+                        count = 1
                         break
                     case 2:
                         db = 'GetQuestionsType1'
+                        count = 1
                         break
                     case 3:
                         db = 'GetQuestionsType1'
+                        count = 1
                         break
                     case 4:
                         db = 'GetQuestionsType1'
+                        count = 1
                         break
                     case 5:
                         db = 'GetQuestionsType2'
+                        count = 1
                         break
                     case 6:
                         db = 'GetQuestionsType3'
+                        count = 1
                         break
                     case 7:
                         db = 'GetQuestionsType1'
+                        count = 1
                         break
                     case 8:
                         db = 'GetQuestionsType4'
+                        count = 1
                         break
                     case 9:
                         db = 'GetQuestionsType1'
+                        count = 1
                         break
                     case 10:
                         db = 'GetQuestionsType1'
+                        count = 1
                         break
                     case 11:
                         db = 'GetQuestionsType1'
+                        count = 1
                         break
                     case 12:
                         db = 'GetQuestionsType4'
+                        count = 1
                         break
                     case 13:
                         db = 'GetQuestionsType4'
+                        count = 1
                         break
                     case 14:
                         db = 'GetQuestionsType5'
+                        count = 1
                         break
                     case 15:
                         db = 'GetQuestionsType5'
+                        count = 1
                         break
                     case 16:
                         db = 'GetQuestionsType6'
+                        count = 1
                         break
                     case 17:
                         db = 'GetQuestionsType6'
+                        count = 1
                         break
                 }
 
                 this.$http
-                    .get(this.$store.state.baseUrl + `api/test/` + db + `?task=` + this.$store.state.currentTask)
+                    .get(this.$store.state.baseUrl + `api/test/` + db + `?task=` + this.$store.state.currentTask + `&count=` + count)
                     .then(response => {
                         this.questions = response.data
                         this.loaded = true

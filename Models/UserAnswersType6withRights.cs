@@ -12,10 +12,18 @@ namespace Tmp.Models
         public int IterationId { get; set; }
         public int QuestionId { get; set; }
         public int Parallel { get; set; }
-        public float UserAnswer1 { get; set; }
-        public float Right1 { get; set; }
-        public float UserAnswer2 { get; set; }
-        public float Right2 { get; set; }
+        [MaxLength(100)]
+        public string UserAnswer1 { get; set; }
+        [MaxLength(100)]
+        public string Right1 { get; set; }
+        [MaxLength(100)]
+        public string UserAnswer2 { get; set; }
+        [MaxLength(100)]
+        public string Right2 { get; set; }
+        [MaxLength(100)]
+        public string UserAnswer3 { get; set; }
+        [MaxLength(100)]
+        public string Right3 { get; set; }
         public int Task { get; set; }
 
     }

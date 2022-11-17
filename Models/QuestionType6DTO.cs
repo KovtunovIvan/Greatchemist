@@ -15,6 +15,8 @@ namespace Tmp.Models
         public string Description1 { get; set; }
         [MaxLength(100)]
         public string Description2 { get; set; }
+        [MaxLength(100)]
+        public string Description3 { get; set; }
         public int Task { get; set; }
     }
 }

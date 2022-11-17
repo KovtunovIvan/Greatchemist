@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tmp.Models;
 
 namespace Tmp.Migrations
 {
     [DbContext(typeof(GreatChemistContext))]
-    partial class GreatChemistContextModelSnapshot : ModelSnapshot
+    [Migration("20220829115151_ChangeType6New")]
+    partial class ChangeType6New
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -316,6 +318,9 @@ namespace Tmp.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("SubTask")
+                        .HasColumnType("int");
+
                     b.Property<int>("Task")
                         .HasColumnType("int");
 
@@ -335,20 +340,6 @@ namespace Tmp.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<int>("NotOfficialNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("OfficialNumber")
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<int>("Time")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
@@ -701,6 +692,9 @@ namespace Tmp.Migrations
                     b.Property<string>("Right3")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("SubTask")
+                        .HasColumnType("int");
 
                     b.Property<int>("Task")
                         .HasColumnType("int");

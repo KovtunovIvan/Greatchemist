@@ -208,7 +208,8 @@ namespace Tmp.Controllers
                 a.Parallel == Parallel &&
                 a.Task == Task &&
                 a.UserAnswer1 == a.Right1 &&
-                a.UserAnswer2 == a.Right2).Count();
+                a.UserAnswer2 == a.Right2 &&
+                a.UserAnswer3 == a.Right3).Count();
 
             return Ok(RightCount);
         }
@@ -220,10 +221,33 @@ namespace Tmp.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<QuestionType1DTO> GetQuestionsType1(int task)
+        public IEnumerable<QuestionType1DTO> GetQuestionsType1(int task, int count)
         {
             IEnumerable<QuestionType1> questions = db.QuestionsType1
                 .Where(a => a.Task == task && !a.Deleted).ToList();
+            DateTime date = DateTime.Now;
+            if(date.Millisecond % 2 == 0)
+            {
+                if(date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.QuestionLink).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.QuestionLink).Take(count).ToList();
+                }
+            }
+            else
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.RightBtn).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.RightBtn).Take(count).ToList();
+                }
+            }
             IEnumerable<QuestionType1DTO> result = questions
                 .Select(c =>
                      new QuestionType1DTO
@@ -238,10 +262,33 @@ namespace Tmp.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<QuestionType2DTO> GetQuestionsType2(int task)
+        public IEnumerable<QuestionType2DTO> GetQuestionsType2(int task, int count)
         {
             IEnumerable<QuestionType2> questions = db.QuestionsType2
                 .Where(a => a.Task == task && !a.Deleted).ToList();
+            DateTime date = DateTime.Now;
+            if (date.Millisecond % 2 == 0)
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.QuestionLink).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.QuestionLink).Take(count).ToList();
+                }
+            }
+            else
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.RightBtn).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.RightBtn).Take(count).ToList();
+                }
+            }
             IEnumerable<QuestionType2DTO> result = questions
                 .Select(c =>
                      new QuestionType2DTO
@@ -258,10 +305,33 @@ namespace Tmp.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<QuestionType3DTO> GetQuestionsType3(int task)
+        public IEnumerable<QuestionType3DTO> GetQuestionsType3(int task, int count)
         {
             IEnumerable<QuestionType3> questions = db.QuestionsType3
                 .Where(a => a.Task == task && !a.Deleted).ToList();
+            DateTime date = DateTime.Now;
+            if (date.Millisecond % 2 == 0)
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.QuestionLink).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.QuestionLink).Take(count).ToList();
+                }
+            }
+            else
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.RightBtn).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.RightBtn).Take(count).ToList();
+                }
+            }
             IEnumerable<QuestionType3DTO> result = questions
                 .Select(c =>
                      new QuestionType3DTO
@@ -288,10 +358,33 @@ namespace Tmp.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<QuestionType4DTO> GetQuestionsType4(int task)
+        public IEnumerable<QuestionType4DTO> GetQuestionsType4(int task, int count)
         {
             IEnumerable<QuestionType4> questions = db.QuestionsType4
                 .Where(a => a.Task == task && !a.Deleted).ToList();
+            DateTime date = DateTime.Now;
+            if (date.Millisecond % 2 == 0)
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.QuestionLink).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.QuestionLink).Take(count).ToList();
+                }
+            }
+            else
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.RightBtn).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.RightBtn).Take(count).ToList();
+                }
+            }
             IEnumerable<QuestionType4DTO> result = questions
                 .Select(c =>
                      new QuestionType4DTO
@@ -307,18 +400,65 @@ namespace Tmp.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<QuestionType5> GetQuestionsType5(int task)
+        public IEnumerable<QuestionType5> GetQuestionsType5(int task, int count)
         {
             IEnumerable<QuestionType5> questions = db.QuestionsType5
                 .Where(a => a.Task == task && !a.Deleted).ToList();
+            DateTime date = DateTime.Now;
+            if (date.Millisecond % 2 == 0)
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.QuestionLink).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.QuestionLink).Take(count).ToList();
+                }
+            }
+            else
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.Id).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.Id).Take(count).ToList();
+                }
+            }
             return questions;
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<QuestionType6> GetQuestionsType6(int task)
+        public IEnumerable<QuestionType6> GetQuestionsType6(int task, int count)
         {
             IEnumerable<QuestionType6> questions = db.QuestionsType6
-                .Where(a => a.Task == task && !a.Deleted).ToList();
+            .Where(a => a.Task == task && !a.Deleted ).ToList();
+            DateTime date = DateTime.Now;
+            if (date.Millisecond % 2 == 0)
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.QuestionLink).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.QuestionLink).Take(count).ToList();
+                }
+            }
+            else
+            {
+                if (date.Second % 2 == 0)
+                {
+                    questions = questions.OrderBy(a => a.Description1).Take(count).ToList();
+                }
+                else
+                {
+                    questions = questions.OrderByDescending(a => a.Description1).Take(count).ToList();
+                }
+            }
+            
             return questions;
         }
     }

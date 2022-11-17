@@ -12,19 +12,24 @@
                     <v-container>
                         <v-row>
                             <v-col cols="12"
-                                   sm="6"
+                                   sm="4"
                                    v-if="question.description1">
-                                <v-text-field v-model="userAnswer1"
-                                              :label="question.description1"
-                                              type="number"></v-text-field>
+                                <v-text-field v-model.toLowerCase.trim="userAnswer1"
+                                              :label="question.description1"></v-text-field>
                             </v-col>
 
                             <v-col cols="12"
-                                   sm="6"
+                                   sm="4"
                                    v-if="question.description2">
-                                <v-text-field v-model="userAnswer2"
-                                              :label="question.description2"
-                                              type="number"></v-text-field>
+                                <v-text-field v-model.toLowerCase.trim="userAnswer2"
+                                              :label="question.description2"></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12"
+                                   sm="4"
+                                   v-if="question.description3">
+                                <v-text-field v-model.toLowerCase.trim="userAnswer3"
+                                              :label="question.description3"></v-text-field>
                             </v-col>
                         </v-row>
                     </v-container>
@@ -81,6 +86,7 @@
             loaded: false,
             userAnswer1: null,
             userAnswer2: null,
+            userAnswer3: null,
         }),
 
         computed: {
@@ -106,6 +112,7 @@
                 this.$store.state.answers = []
                 this.userAnswer1 = null
                 this.userAnswer2 = null
+                this.userAnswer3 = null
                 this.startTime = new Date()
                 this.isTesting = true
                 this.loaded = true
@@ -123,8 +130,9 @@
             addAnswer() {
                 let a = {
                     QuestionId: this.question.id,
-                    UserAnswer1: this.userAnswer1 ? this.userAnswer1 : 0,
-                    UserAnswer2: this.userAnswer2 ? this.userAnswer2 : 0,
+                    UserAnswer1: this.userAnswer1,
+                    UserAnswer2: this.userAnswer2,
+                    UserAnswer3: this.userAnswer3,
                     IterationId: this.iterationId,
                     Parallel: this.$store.state.parallel
                 }
