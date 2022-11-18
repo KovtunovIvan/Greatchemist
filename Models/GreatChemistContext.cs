@@ -22,6 +22,7 @@ namespace Tmp.Models
         public DbSet<UserAnswerType2> UserAnswersType2 { get; set; }
         public DbSet<UserAnswerType3> UserAnswersType3 { get; set; }
         public DbSet<UserAnswerType4> UserAnswersType4 { get; set; }
+        public DbSet<UserAnswerType5> UserAnswersType5 { get; set; }
         public DbSet<UserAnswerType6> UserAnswersType6 { get; set; }
         public DbSet<TaskTime> TaskTimes { get; set; }
         

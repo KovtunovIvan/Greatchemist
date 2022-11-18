@@ -2,22 +2,23 @@
 
 namespace Tmp.Migrations
 {
-    public partial class ChangeTask : Migration
+    public partial class TaskChange : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
+            migrationBuilder.AddColumn<int>(
                 name: "Number",
                 table: "Tasks",
-                newName: "NotOfficialNumber");
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "NotOfficialNumber",
-                table: "Tasks",
-                newName: "Number");
+            migrationBuilder.DropColumn(
+                name: "Number",
+                table: "Tasks");
         }
     }
 }

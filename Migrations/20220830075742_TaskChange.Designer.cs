@@ -10,8 +10,8 @@ using Tmp.Models;
 namespace Tmp.Migrations
 {
     [DbContext(typeof(GreatChemistContext))]
-    [Migration("20220829144255_Change")]
-    partial class Change
+    [Migration("20220830075742_TaskChange")]
+    partial class TaskChange
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -340,7 +340,7 @@ namespace Tmp.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("NotOfficialNumber")
+                    b.Property<int>("Number")
                         .HasColumnType("int");
 
                     b.Property<string>("OfficialNumber")

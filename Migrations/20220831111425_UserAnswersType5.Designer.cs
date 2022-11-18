@@ -10,8 +10,8 @@ using Tmp.Models;
 namespace Tmp.Migrations
 {
     [DbContext(typeof(GreatChemistContext))]
-    [Migration("20220821154405_Type5")]
-    partial class Type5
+    [Migration("20220831111425_UserAnswersType5")]
+    partial class UserAnswersType5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,10 @@ namespace Tmp.Migrations
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(320)
+                        .HasColumnType("nvarchar(320)");
 
                     b.Property<string>("Title")
                         .HasMaxLength(100)
@@ -276,6 +280,52 @@ namespace Tmp.Migrations
                     b.ToTable("QuestionsType5");
                 });
 
+            modelBuilder.Entity("Tmp.Models.QuestionType6", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Description1")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Description2")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Description3")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("QuestionLink")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Right1")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Right2")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Right3")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Task")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuestionsType6");
+                });
+
             modelBuilder.Entity("Tmp.Models.Task", b =>
                 {
                     b.Property<int>("Id")
@@ -287,6 +337,20 @@ namespace Tmp.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OfficialNumber")
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<int>("Time")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
@@ -345,6 +409,12 @@ namespace Tmp.Migrations
 
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsManager")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsTeacher")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("MainHand")
                         .HasColumnType("bit");
@@ -456,6 +526,63 @@ namespace Tmp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserAnswersType4");
+                });
+
+            modelBuilder.Entity("Tmp.Models.UserAnswerType5", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IterationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Parallel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserAnswer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserAnswersType5");
+                });
+
+            modelBuilder.Entity("Tmp.Models.UserAnswerType6", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IterationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Parallel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserAnswer1")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("UserAnswer2")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("UserAnswer3")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserAnswersType6");
                 });
 
             modelBuilder.Entity("Tmp.Models.UserAnswersType1withRights", b =>
@@ -572,6 +699,53 @@ namespace Tmp.Migrations
                     b.HasKey("Id");
 
                     b.ToView("UserAnswersType4withRights");
+                });
+
+            modelBuilder.Entity("Tmp.Models.UserAnswersType6withRights", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IterationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Parallel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Right1")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Right2")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Right3")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Task")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserAnswer1")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("UserAnswer2")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("UserAnswer3")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToView("UserAnswersType6withRights");
                 });
 #pragma warning restore 612, 618
         }

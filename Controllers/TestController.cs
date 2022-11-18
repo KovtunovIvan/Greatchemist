@@ -168,14 +168,27 @@ namespace Tmp.Controllers
         [HttpPost("[action]")]
         public IActionResult addAnswersType5([FromBody] UserAnswerType5DTO user)
         {
+            int IterationId = 0;
+            int Parallel = 0;
+            int Task = user.Task;
+
+            foreach (UserAnswerType5 ans in user.Answers)
+            {
+                db.UserAnswersType5.Add(ans);
+                IterationId = ans.IterationId;
+                Parallel = ans.Parallel;
+            }
+
             TaskTime tt = new TaskTime();
-            tt.IterationId = user.IterationId;
-            tt.Parallel = user.Parallel;
-            tt.TaskId = user.Task;
+            tt.IterationId = IterationId;
+            tt.Parallel = Parallel;
+            tt.TaskId = Task;
             tt.StartTime = user.StartTime;
             tt.EndTime = user.EndTime;
             db.TaskTimes.Add(tt);
+
             db.SaveChanges();
+
             return Ok();
         }
 
@@ -217,7 +230,7 @@ namespace Tmp.Controllers
         [HttpGet("[action]")]
         public Models.Task GetTask(int id)
         {
-            return db.Tasks.Find(id);
+            return db.Tasks.Where(a => a.Number == id).FirstOrDefault();
         }
 
         [HttpGet("[action]")]

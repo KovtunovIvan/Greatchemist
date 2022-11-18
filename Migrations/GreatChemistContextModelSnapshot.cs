@@ -338,7 +338,7 @@ namespace Tmp.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("NotOfficialNumber")
+                    b.Property<int>("Number")
                         .HasColumnType("int");
 
                     b.Property<string>("OfficialNumber")
@@ -524,6 +524,30 @@ namespace Tmp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserAnswersType4");
+                });
+
+            modelBuilder.Entity("Tmp.Models.UserAnswerType5", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IterationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Parallel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserAnswer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserAnswersType5");
                 });
 
             modelBuilder.Entity("Tmp.Models.UserAnswerType6", b =>

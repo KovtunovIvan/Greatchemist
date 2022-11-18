@@ -10,9 +10,8 @@ namespace Tmp.Models
     {
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        public IEnumerable<UserAnswerType5> Answers { get; set; }
         public int Task { get; set; }
-        public int IterationId { get; set; }
-        public int Parallel { get; set; }
 
     }
 }

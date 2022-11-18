@@ -23,7 +23,7 @@
             </div>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && !isTesting">
-            <p class="testText">Вы успешно завершили задание {{$store.state.currentTask}}</p>
+            <p class="testText">Вы успешно завершили задание {{officialNumber}}</p>
             <p class="testText">Ваш резутат: {{rightCount}} из {{commonCount}}</p>
             <p class="testText">Затраченное время: {{timeFunc}}</p>
             <div class="answerButtonsWrap">
@@ -49,6 +49,10 @@
             },
             iterationId: {
                 type: Number,
+                required: true
+            },
+            officialNumber: {
+                type: String,
                 required: true
             },
         },

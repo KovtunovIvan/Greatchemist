@@ -9,7 +9,7 @@ namespace Tmp.Models
     public class Task
     {
         public int Id { get; set; }
-        public int NotOfficialNumber { get; set; }
+        public int Number { get; set; }
         [MaxLength(5)]
         public string OfficialNumber { get; set; }
         [MaxLength(1000)]

@@ -7,43 +7,50 @@
                                      :size="70"></v-progress-circular>
             </div>
             <div v-if="loaded && !passingTest">
-                <p class="testTitle">Задание {{$store.state.currentTask}}</p>
+                <p class="testTitle">Задание {{task.officialNumber}}</p>
                 <p class="testText">{{task.description}}</p>
             </div>
 
             <app-task-type1 v-if="loaded && passingTest && ($store.state.currentTask == 1 || $store.state.currentTask == 2 || $store.state.currentTask == 3 || $store.state.currentTask == 4 || $store.state.currentTask == 7 || $store.state.currentTask == 9 || $store.state.currentTask == 10 || $store.state.currentTask == 11)"
                             :questions="questions"
                             :iterationId="$store.state.iteration"
+                            :officialNumber="task.officialNumber"
                             @testEnded="startNewTask()"
                             :key="$store.state.currentTask"></app-task-type1>
 
             <app-task-type2 v-if="loaded && passingTest && ($store.state.currentTask == 5)"
                             :questions="questions"
                             :iterationId="$store.state.iteration"
+                            :officialNumber="task.officialNumber"
                             @testEnded="startNewTask()"
                             :key="$store.state.currentTask"></app-task-type2>
 
             <app-task-type3 v-if="loaded && passingTest && ($store.state.currentTask == 6)"
                             :questions="questions"
                             :iterationId="$store.state.iteration"
+                            :officialNumber="task.officialNumber"
                             @testEnded="startNewTask()"
                             :key="$store.state.currentTask"></app-task-type3>
 
             <app-task-type4 v-if="loaded && passingTest && ($store.state.currentTask == 8 || $store.state.currentTask == 12 || $store.state.currentTask == 13)"
                             :questions="questions"
                             :iterationId="$store.state.iteration"
+                            :officialNumber="task.officialNumber"
                             @testEnded="startNewTask()"
                             :key="$store.state.currentTask"></app-task-type4>
 
             <app-task-type5 v-if="loaded && passingTest && ($store.state.currentTask == 14 || $store.state.currentTask == 15)"
                             :questions="questions"
                             :iterationId="$store.state.iteration"
+                            :officialNumber="task.officialNumber"
+                            :timeDB="task.time"
                             @testEnded="startNewTask()"
                             :key="$store.state.currentTask"></app-task-type5>
 
-            <app-task-type6 v-if="loaded && passingTest && ($store.state.currentTask == 16 || $store.state.currentTask == 17)"
+            <app-task-type6 v-if="loaded && passingTest && ($store.state.currentTask == 16 || $store.state.currentTask == 17 || $store.state.currentTask == 18 || $store.state.currentTask == 19 || $store.state.currentTask == 20 || $store.state.currentTask == 21 || $store.state.currentTask == 22 || $store.state.currentTask == 23 || $store.state.currentTask == 24 || $store.state.currentTask == 25 || $store.state.currentTask == 26 || $store.state.currentTask == 27 || $store.state.currentTask == 28 || $store.state.currentTask == 29 || $store.state.currentTask == 30 || $store.state.currentTask == 31)"
                             :questions="questions"
                             :iterationId="$store.state.iteration"
+                            :officialNumber="task.officialNumber"
                             @testEnded="startNewTask()"
                             :key="$store.state.currentTask"></app-task-type6>
         </div>
@@ -81,7 +88,7 @@
                 this.loaded = false
                 this.$store.state.parallel = 1
                 this.$store.state.currentTask = this.$store.state.currentTask + 1
-                if (this.$store.state.currentTask == 18) {
+                if (this.$store.state.currentTask == 32) {
                     this.endTask()
                 } else {
                     this.getTask()
@@ -166,6 +173,62 @@
                         count = 1
                         break
                     case 17:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 18:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 19:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 20:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 21:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 22:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 23:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 24:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 25:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 26:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 27:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 28:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 29:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 30:
+                        db = 'GetQuestionsType6'
+                        count = 1
+                        break
+                    case 31:
                         db = 'GetQuestionsType6'
                         count = 1
                         break

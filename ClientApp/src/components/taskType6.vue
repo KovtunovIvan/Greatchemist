@@ -15,21 +15,24 @@
                                    sm="4"
                                    v-if="question.description1">
                                 <v-text-field v-model.toLowerCase.trim="userAnswer1"
-                                              :label="question.description1"></v-text-field>
+                                              :label="question.description1"
+                                              outlined></v-text-field>
                             </v-col>
 
                             <v-col cols="12"
                                    sm="4"
                                    v-if="question.description2">
                                 <v-text-field v-model.toLowerCase.trim="userAnswer2"
-                                              :label="question.description2"></v-text-field>
+                                              :label="question.description2"
+                                              outlined></v-text-field>
                             </v-col>
 
                             <v-col cols="12"
                                    sm="4"
                                    v-if="question.description3">
                                 <v-text-field v-model.toLowerCase.trim="userAnswer3"
-                                              :label="question.description3"></v-text-field>
+                                              :label="question.description3"
+                                              outlined></v-text-field>
                             </v-col>
                         </v-row>
                     </v-container>
@@ -45,7 +48,7 @@
             </div>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && !isTesting">
-            <p class="testText">Вы успешно завершили задание {{$store.state.currentTask}}</p>
+            <p class="testText">Вы успешно завершили задание {{officialNumber}}</p>
             <p class="testText">Ваш резутат: {{rightCount}} из {{commonCount}}</p>
             <p class="testText">Затраченное время: {{timeFunc}}</p>
             <div class="answerButtonsWrap">
@@ -71,6 +74,10 @@
             },
             iterationId: {
                 type: Number,
+                required: true
+            },
+            officialNumber: {
+                type: String,
                 required: true
             },
         },
