@@ -6,6 +6,7 @@
                                  :size="70"></v-progress-circular>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && isTesting">
+            <p>Оставшееся время: {{commonTimeFunc}}</p>
             <img :src="`../images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
             <div class="answerInputsWrap">
                 <v-form>
@@ -80,6 +81,10 @@
                 type: String,
                 required: true
             },
+            timeDB: {
+                type: Number,
+                required: true
+            },
         },
 
         data: () => ({
@@ -94,6 +99,8 @@
             userAnswer1: null,
             userAnswer2: null,
             userAnswer3: null,
+            timer: 0,
+            time: 0,
         }),
 
         computed: {
@@ -109,7 +116,21 @@
                 seconds = (seconds < 10) ? "0" + seconds : seconds;
 
                 return hours + ":" + minutes + ":" + seconds;
-            }
+            },
+
+            commonTimeFunc: function () {
+                let dif = this.time
+
+                var seconds = Math.floor((dif / 1) % 60),
+                    minutes = Math.floor((dif / (1 * 60)) % 60),
+                    hours = Math.floor((dif / (1 * 60 * 60)) % 24);
+
+                hours = (hours < 10) ? "0" + hours : hours;
+                minutes = (minutes < 10) ? "0" + minutes : minutes;
+                seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+                return hours + ":" + minutes + ":" + seconds;
+            },
         },
 
         methods: {
@@ -122,7 +143,19 @@
                 this.userAnswer3 = null
                 this.startTime = new Date()
                 this.isTesting = true
+                this.time = this.timeDB
                 this.loaded = true
+                this.countdown()
+            },
+
+            countdown() {
+                this.time--
+                if (this.time < 0) {
+                    this.addAnswer()
+                }
+                else {
+                    this.timer = setTimeout(this.countdown, 1000)
+                }
             },
 
             restart() {

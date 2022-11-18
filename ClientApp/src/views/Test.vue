@@ -51,6 +51,7 @@
                             :questions="questions"
                             :iterationId="$store.state.iteration"
                             :officialNumber="task.officialNumber"
+                            :timeDB="task.time"
                             @testEnded="startNewTask()"
                             :key="$store.state.currentTask"></app-task-type6>
         </div>
