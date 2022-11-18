@@ -101,6 +101,7 @@
             userAnswer3: null,
             timer: 0,
             time: 0,
+            stopTimer: false,
         }),
 
         computed: {
@@ -135,6 +136,7 @@
 
         methods: {
             loadPage() {
+                this.stopTimer = false
                 this.id = 0
                 this.question = this.questions[this.id]
                 this.$store.state.answers = []
@@ -149,12 +151,14 @@
             },
 
             countdown() {
-                this.time--
-                if (this.time < 0) {
-                    this.addAnswer()
-                }
-                else {
-                    this.timer = setTimeout(this.countdown, 1000)
+                if (!this.stopTimer) {
+                    this.time--
+                    if (this.time < 0) {
+                        this.addAnswer()
+                    }
+                    else {
+                        this.timer = setTimeout(this.countdown, 1000)
+                    }
                 }
             },
 
@@ -168,6 +172,7 @@
             },
 
             addAnswer() {
+                this.stopTimer = true
                 let a = {
                     QuestionId: this.question.id,
                     UserAnswer1: this.userAnswer1,
@@ -191,7 +196,7 @@
                         answers: this.$store.state.answers,
                         task: this.$store.state.currentTask
                     }
-
+                    debugger
                     this.$http
                         .post(this.$store.state.baseUrl + `api/test/addAnswersType6`, res)
                         .then(response => {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tmp.Models
 {
-    //8
+    //8,12,13
     public class QuestionType4
     {
         public int Id { get; set; }

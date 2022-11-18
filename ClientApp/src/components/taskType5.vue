@@ -70,6 +70,7 @@
             userAnswer: null,
             timer: 0,
             time: 0,
+            stopTimer: false,
         }),
 
         computed: {
@@ -103,6 +104,7 @@
 
         methods: {
             loadPage() {
+                this.stopTimer = false
                 this.id = 0
                 this.question = this.questions[this.id]
                 this.$store.state.answers = []
@@ -116,12 +118,14 @@
             },
 
             countdown() {
-                this.time--
-                if (this.time < 0) {
-                    this.addAnswer()
-                }
-                else {
-                    this.timer = setTimeout(this.countdown, 1000)
+                if (!this.stopTimer) {
+                    this.time--
+                    if (this.time < 0) {
+                        this.addAnswer()
+                    }
+                    else {
+                        this.timer = setTimeout(this.countdown, 1000)
+                    }
                 }
             },
 

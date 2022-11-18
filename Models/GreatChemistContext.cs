@@ -32,6 +32,12 @@ namespace Tmp.Models
         public DbSet<UserAnswersType3withRights> UserAnswersType3withRights { get; set; }
         public DbSet<UserAnswersType4withRights> UserAnswersType4withRights { get; set; }
         public DbSet<UserAnswersType6withRights> UserAnswersType6withRights { get; set; }
+
+        public DbSet<UserAnswersType1withRightsExt> UserAnswersType1withRightsExt { get; set; }
+        public DbSet<UserAnswersType2withRightsExt> UserAnswersType2withRightsExt { get; set; }
+        public DbSet<UserAnswersType3withRightsExt> UserAnswersType3withRightsExt { get; set; }
+        public DbSet<UserAnswersType4withRightsExt> UserAnswersType4withRightsExt { get; set; }
+        public DbSet<UserAnswersType6withRightsExt> UserAnswersType6withRightsExt { get; set; }
         public GreatChemistContext(DbContextOptions<GreatChemistContext> options)
             : base(options)
         {
@@ -58,6 +64,27 @@ namespace Tmp.Models
             modelBuilder
                 .Entity<UserAnswersType6withRights>()
                 .ToView(nameof(UserAnswersType6withRights))
+                .HasKey(u => new { u.Id });
+
+            modelBuilder
+                .Entity<UserAnswersType1withRightsExt>()
+                .ToView(nameof(UserAnswersType1withRightsExt))
+                .HasKey(u => new { u.Id });
+            modelBuilder
+                .Entity<UserAnswersType2withRightsExt>()
+                .ToView(nameof(UserAnswersType2withRightsExt))
+                .HasKey(u => new { u.Id });
+            modelBuilder
+                .Entity<UserAnswersType3withRightsExt>()
+                .ToView(nameof(UserAnswersType3withRightsExt))
+                .HasKey(u => new { u.Id });
+            modelBuilder
+                .Entity<UserAnswersType4withRightsExt>()
+                .ToView(nameof(UserAnswersType4withRightsExt))
+                .HasKey(u => new { u.Id });
+            modelBuilder
+                .Entity<UserAnswersType6withRightsExt>()
+                .ToView(nameof(UserAnswersType6withRightsExt))
                 .HasKey(u => new { u.Id });
         }
     }
