@@ -44,6 +44,28 @@ namespace Tmp.Controllers
             return result;
         }
 
+        [HttpGet("[action]")]
+        public IEnumerable<UserDTO> GetGroupUsers(int groupId)
+        {
+            IEnumerable<User> users = db.Users
+                .Where(a => !a.Deleted && a.GroupId == groupId)
+                .OrderBy(a => a.Name)
+                .ToList();
+            IEnumerable<UserDTO> result = users
+                .Select(c =>
+                     new UserDTO
+                     {
+                         Id = c.Id,
+                         Email = c.Email,
+                         Name = c.Name,
+                         GroupId = c.GroupId,
+                         IsTeacher = c.IsTeacher,
+                         IsManager = c.IsManager,
+                         Deleted = c.Deleted,
+                     });
+            return result;
+        }
+
         [HttpPost("[action]")]
         public IActionResult AddUser([FromBody] User user)
         {

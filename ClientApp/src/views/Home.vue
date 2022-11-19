@@ -3,7 +3,8 @@
         <button class="customBtn" @click="$router.push(`/About`)">О сайте</button>
         <button class="customBtn" @click="$router.push(`/Groups`)" v-if="$store.state.isTeacher">Группы</button>
         <button class="customBtn" @click="$router.push(`/Admin`)" v-if="$store.state.isManager">Администрирование</button>
-        <button class="customBtn" @click="$router.push(`/Results`)" v-if="$store.state.isAuthorized">Результаты</button>
+        <button class="customBtn" @click="$router.push(`/TeacherGroups`)" v-if="$store.state.isTeacher">Результаты учеников</button>
+        <button class="customBtn" @click="$router.push(`/Results`)" v-if="$store.state.isAuthorized">Мои результаты</button>
         <button class="customBtn" @click="$router.push(`/Test`)" v-if="$store.state.isAuthorized">Пройти тест</button>
         <button class="customBtn" @click="$router.push(`/SignUp`)" v-if="!$store.state.isAuthorized">Регистрация</button>
         <button class="customBtn" @click="$router.push(`/SignIn`)" v-if="!$store.state.isAuthorized">Авторизация</button>
@@ -40,7 +41,7 @@
         border-radius: 26px;
         height: 85px;
         max-height: 10%;
-        margin-bottom: 5%;
+        margin-bottom: 2%;
         margin-left: 5%;
         width: 345px;
         max-width: 90%;

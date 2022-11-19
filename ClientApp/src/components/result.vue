@@ -7,7 +7,7 @@
         </div>
         <div v-else class="text-center">
             <a href="../results.csv" download="GCResults">Скачать результаты</a>
-            <table>
+            <table class="results">
                 <tr>
                     <td rowspan="2">Задание</td>
                     <td colspan="2">Параллель 1</td>
@@ -28,7 +28,7 @@
                 </tr>
             </table>
             <br />
-            <table>
+            <table class="results">
                 <tr>
                     <td>Задание</td>
                     <td>Время</td>
@@ -41,7 +41,7 @@
                 </tr>
             </table>
             <br />
-            <table>
+            <table class="results">
                 <tr>
                     <td>Арифметический субтест</td>
                     <td>Верно</td>
@@ -113,14 +113,14 @@
 </script>
 
 <style>
-    table{
-        width:100%;
+    table.results {
+        width: 100%;
     }
-    table, th, td {
+    table.results, .results th, .results td {
         border: 1px solid black;
         border-collapse: collapse;
     }
-    td{
-        padding:5px 10px;
+    .results td {
+        padding: 5px 10px;
     }
 </style>

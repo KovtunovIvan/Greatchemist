@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 import Admin from '../views/Admin.vue'
 import Groups from '../views/Groups.vue'
 import Results from '../views/Results.vue'
+import TeacherGroups from '../views/TeacherGroups.vue'
 import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
 import Test from '../views/Test.vue'
@@ -36,6 +37,11 @@ const routes = [
         path: '/results',
         name: 'Results',
         component: Results
+    },
+    {
+        path: '/teacherGroups',
+        name: 'TeacherGroups',
+        component: TeacherGroups
     },
     {
         path: '/signIn',

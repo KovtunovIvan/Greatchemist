@@ -16,6 +16,8 @@ import TaskType4 from './components/taskType4.vue'
 import TaskType5 from './components/taskType5.vue'
 import TaskType6 from './components/taskType6.vue'
 import Result from './components/result.vue'
+import GroupUsers from './components/groupUsers.vue'
+import StudentResults from './components/studentResults.vue'
 
 Vue.component('app-snackbar', Snackbar)
 Vue.component('app-date-picker', DatePicker)
@@ -26,6 +28,8 @@ Vue.component('app-task-type4', TaskType4)
 Vue.component('app-task-type5', TaskType5)
 Vue.component('app-task-type6', TaskType6)
 Vue.component('app-result', Result)
+Vue.component('app-group-users', GroupUsers)
+Vue.component('app-student-results', StudentResults)
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
