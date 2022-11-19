@@ -13,6 +13,8 @@ namespace Tmp.Models
         public int Number { get; set; }
         [MaxLength(5)]
         public string OfficialNumber { get; set; }
+        [MaxLength(1000)]
+        public string Title { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
     }

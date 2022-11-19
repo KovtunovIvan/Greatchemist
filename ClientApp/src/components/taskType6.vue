@@ -196,7 +196,6 @@
                         answers: this.$store.state.answers,
                         task: this.$store.state.currentTask
                     }
-                    debugger
                     this.$http
                         .post(this.$store.state.baseUrl + `api/test/addAnswersType6`, res)
                         .then(response => {

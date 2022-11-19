@@ -7,7 +7,26 @@
                                     :size="70"></v-progress-circular>
         </div>
         <div v-else class="text-center">
-            123
+            <table>
+                <tr>
+                    <td rowspan="2">Задание</td>
+                    <td colspan="2">Параллель 1</td>
+                    <td colspan="2">Параллель 2</td>
+                </tr>
+                <tr>
+                    <td>Ошибки</td>
+                    <td>Время</td>
+                    <td>Ошибки</td>
+                    <td>Время</td>
+                </tr>
+                <tr v-for="result in results">
+                    <td>{{result.officialNumber}} {{result.title}}</td>
+                    <td>Ошибки</td>
+                    <td>Время</td>
+                    <td>Ошибки</td>
+                    <td>Время</td>
+                </tr>
+            </table>
         </div>
     </div>
 </template>
@@ -52,3 +71,13 @@
         },
     };
 </script>
+
+<style>
+    table{
+        width:100%;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
