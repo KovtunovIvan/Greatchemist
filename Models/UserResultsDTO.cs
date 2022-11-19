@@ -8,14 +8,8 @@ namespace Tmp.Models
 {
     public class UserResultsDTO
     {
-        public int Parallel { get; set; }
-        public int Mistakes { get; set; }
-        public int Number { get; set; }
-        [MaxLength(5)]
-        public string OfficialNumber { get; set; }
-        [MaxLength(1000)]
-        public string Title { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public List<UserResults1DTO> R1 { get; set; }
+        public List<UserResults2DTO> R2 { get; set; }
+        public List<UserResults3DTO> R3 { get; set; }
     }
 }

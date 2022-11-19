@@ -37,6 +37,7 @@ namespace Tmp.Models
         public DbSet<UserAnswersType2withRightsExt> UserAnswersType2withRightsExt { get; set; }
         public DbSet<UserAnswersType3withRightsExt> UserAnswersType3withRightsExt { get; set; }
         public DbSet<UserAnswersType4withRightsExt> UserAnswersType4withRightsExt { get; set; }
+        public DbSet<UserAnswersType5Ext> UserAnswersType5Ext { get; set; }
         public DbSet<UserAnswersType6withRightsExt> UserAnswersType6withRightsExt { get; set; }
         public GreatChemistContext(DbContextOptions<GreatChemistContext> options)
             : base(options)
@@ -81,6 +82,10 @@ namespace Tmp.Models
             modelBuilder
                 .Entity<UserAnswersType4withRightsExt>()
                 .ToView(nameof(UserAnswersType4withRightsExt))
+                .HasKey(u => new { u.Id });
+            modelBuilder
+                .Entity<UserAnswersType5Ext>()
+                .ToView(nameof(UserAnswersType5Ext))
                 .HasKey(u => new { u.Id });
             modelBuilder
                 .Entity<UserAnswersType6withRightsExt>()

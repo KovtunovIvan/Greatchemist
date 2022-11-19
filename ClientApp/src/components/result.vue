@@ -1,12 +1,12 @@
-<template>
+﻿<template>
     <div>
-        <p class="customTitle">Результаты</p>
         <div v-if="!loaded" class="text-center">
             <v-progress-circular indeterminate
                                     color="#000"
                                     :size="70"></v-progress-circular>
         </div>
         <div v-else class="text-center">
+            <a href="../results.csv" download="GCResults">Скачать результаты</a>
             <table>
                 <tr>
                     <td rowspan="2">Задание</td>
@@ -19,12 +19,38 @@
                     <td>Ошибки</td>
                     <td>Время</td>
                 </tr>
-                <tr v-for="result in results">
-                    <td>{{result.officialNumber}} {{result.title}}</td>
-                    <td>Ошибки</td>
+                <tr v-for="result in results.r1">
+                    <td style="text-align:left;">{{result.officialNumber}}.&nbsp;{{result.title}}</td>
+                    <td>{{result.mistakes1}}</td>
+                    <td>{{difTime(result.startTime1,result.endTime1)}}</td>
+                    <td>{{result.mistakes2}}</td>
+                    <td>{{difTime(result.startTime2,result.endTime2)}}</td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr>
+                    <td>Задание</td>
                     <td>Время</td>
-                    <td>Ошибки</td>
+                    <td>Ответ</td>
+                </tr>
+                <tr v-for="result in results.r2">
+                    <td style="text-align: left; vertical-align: top;">{{result.officialNumber}}.&nbsp;{{result.title}}</td>
+                    <td style="vertical-align: top;">{{difTime(result.startTime,result.endTime)}}</td>
+                    <td style="text-align:left;">{{result.userAnswer}}</td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr>
+                    <td>Арифметический субтест</td>
+                    <td>Верно</td>
                     <td>Время</td>
+                </tr>
+                <tr v-for="result in results.r3">
+                    <td style="text-align: left; vertical-align: top;">{{result.officialNumber}}.&nbsp;{{result.title}}</td>
+                    <td>{{result.isRight}}</td>
+                    <td style="vertical-align: top;">{{difTime(result.startTime,result.endTime)}}</td>
                 </tr>
             </table>
         </div>
@@ -47,6 +73,20 @@
         },
 
         methods: {
+            difTime(startTime, endTime) {
+                let dif = new Date(endTime) - new Date(startTime)
+
+                var seconds = Math.floor((dif / 1000) % 60),
+                    minutes = Math.floor((dif / (1000 * 60)) % 60),
+                    hours = Math.floor((dif / (1000 * 60 * 60)) % 24);
+
+                hours = (hours < 10) ? "0" + hours : hours;
+                minutes = (minutes < 10) ? "0" + minutes : minutes;
+                seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+                return hours + ":" + minutes + ":" + seconds;
+            },
+
             loadPage() {
                 this.loaded = false
                 this.$http
@@ -79,5 +119,8 @@
     table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
+    }
+    td{
+        padding:5px 10px;
     }
 </style>
