@@ -7,7 +7,7 @@
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && isTesting">
             <p>Оставшееся время: {{commonTimeFunc}}</p>
-            <img :src="`../images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
+            <img :src="`../assets/images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
             <div class="answerInputsWrap">
                 <v-textarea v-model.trim="userAnswer"
                             outlined

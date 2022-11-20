@@ -337,6 +337,7 @@
         min-height: 510px;
         border-radius: 26px;
         text-align: center;
+        overflow: auto;
     }
 
     .testTitle {
@@ -347,7 +348,7 @@
         position: absolute;
         bottom: 0px;
         width: 100%;
-        padding: 30px;
+        padding: 30px 30px 50px 30px;
         display: flex;
         justify-content: space-between;
     }

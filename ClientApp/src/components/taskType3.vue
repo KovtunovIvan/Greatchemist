@@ -1,30 +1,27 @@
 <template>
-    <div style="height:100%;">
+    <div>
         <div v-if="!loaded" class="text-center">
             <v-progress-circular indeterminate
                                  color="#000"
                                  :size="70"></v-progress-circular>
         </div>
-        <div style="position: relative;height:100%;" v-if="loaded && isTesting">
-            <div class="answerButtonsWrap" style="flex-direction: column;">
+        <div style="position: relative;" v-if="loaded && isTesting">
+            <div style="flex-direction: column;">
                 <div class="gidroksid" style="display: flex;">
                     <p>Гидроксид</p>
                     <v-btn color="#FFC702"
                            class="answerButton customBtn14"
-                           @click="addAnswer(1)"
-                           :x-small="isScreenSmall">
+                           @click="addAnswer(1)">
                         {{question.btn1}}
                     </v-btn>
                     <v-btn color="#FFC702"
                            class="answerButton customBtn14"
-                           @click="addAnswer(2)"
-                           :x-small="isScreenSmall">
+                           @click="addAnswer(2)">
                         {{question.btn2}}
                     </v-btn>
                     <v-btn color="#FFC702"
                            class="answerButton customBtn14"
-                           @click="addAnswer(3)"
-                           :x-small="isScreenSmall">
+                           @click="addAnswer(3)">
                         {{question.btn3}}
                     </v-btn>
                 </div>
@@ -34,26 +31,23 @@
                         <p>Оксид</p>
                         <v-btn color="#FFC702"
                                class="answerButton customBtn14"
-                               @click="addAnswer(4)"
-                           :x-small="isScreenSmall">
+                               @click="addAnswer(4)">
                             {{question.btn4}}
                         </v-btn>
                         <v-btn color="#FFC702"
                                class="answerButton customBtn14"
-                               @click="addAnswer(5)"
-                           :x-small="isScreenSmall">
+                               @click="addAnswer(5)">
                             {{question.btn5}}
                         </v-btn>
                         <v-btn color="#FFC702"
                                class="answerButton customBtn14"
-                               @click="addAnswer(6)"
-                           :x-small="isScreenSmall">
+                               @click="addAnswer(6)">
                             {{question.btn6}}
                         </v-btn>
                     </div>
 
                     <div class="centarlPartWrapImgWrap">
-                        <img :src="`../images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
+                        <img :src="`../assets/images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
                     </div>
 
                     
@@ -61,20 +55,17 @@
                         <p>Кислота</p>
                         <v-btn color="#FFC702"
                                class="answerButton customBtn14"
-                               @click="addAnswer(7)"
-                           :x-small="isScreenSmall">
+                               @click="addAnswer(7)">
                             {{question.btn7}}
                         </v-btn>
                         <v-btn color="#FFC702"
                                class="answerButton customBtn14"
-                               @click="addAnswer(8)"
-                           :x-small="isScreenSmall">
+                               @click="addAnswer(8)">
                             {{question.btn8}}
                         </v-btn>
                         <v-btn color="#FFC702"
                                class="answerButton customBtn14"
-                               @click="addAnswer(9)"
-                           :x-small="isScreenSmall">
+                               @click="addAnswer(9)">
                             {{question.btn9}}
                         </v-btn>
                     </div>
@@ -84,32 +75,27 @@
                     <p>Соль</p>
                     <v-btn color="#FFC702"
                            class="answerButton customBtn14"
-                           @click="addAnswer(10)"
-                           :x-small="isScreenSmall">
+                           @click="addAnswer(10)">
                         {{question.btn10}}
                     </v-btn>
                     <v-btn color="#FFC702"
                            class="answerButton customBtn14"
-                           @click="addAnswer(11)"
-                           :x-small="isScreenSmall">
+                           @click="addAnswer(11)">
                         {{question.btn11}}
                     </v-btn>
                     <v-btn color="#FFC702"
                            class="answerButton customBtn14"
-                           @click="addAnswer(12)"
-                           :x-small="isScreenSmall">
+                           @click="addAnswer(12)">
                         {{question.btn12}}
                     </v-btn>
                     <v-btn color="#FFC702"
                            class="answerButton customBtn14"
-                           @click="addAnswer(13)"
-                           :x-small="isScreenSmall">
+                           @click="addAnswer(13)">
                         {{question.btn13}}
                     </v-btn>
                     <v-btn color="#FFC702"
                            class="answerButton customBtn14"
-                           @click="addAnswer(14)"
-                           :x-small="isScreenSmall">
+                           @click="addAnswer(14)">
                         {{question.btn14}}
                     </v-btn>
                 </div>
@@ -174,14 +160,6 @@
                 seconds = (seconds < 10) ? "0" + seconds : seconds;
 
                 return hours + ":" + minutes + ":" + seconds;
-            },
-
-            isScreenSmall : function () {
-                if (document.documentElement.clientWidth < 1030) {
-                    return true
-                } else {
-                    return false
-                }
             },
         },
 
@@ -316,7 +294,7 @@
     }
 
     .customBtn14 {
-        margin-bottom: 10px;
+        margin-bottom: 10px !important;
     }
 
     @media only screen and (max-width: 850px) {
@@ -340,12 +318,6 @@
 
         .centarlPartWrapImgWrap{
             width:100%;
-        }
-
-        .customBtn14 {
-            margin-bottom: 5px;
-            margin-left: 5px;
-            margin-right: 5px;
         }
     }
 </style>

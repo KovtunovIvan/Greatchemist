@@ -33,6 +33,7 @@
         width: 100%;
         display: flex;
         flex-direction: column-reverse;
+        padding: 15% 0%;
     }
 
     .customBtn {
@@ -41,7 +42,7 @@
         border-radius: 26px;
         height: 85px;
         max-height: 10%;
-        margin-bottom: 2%;
+        margin-bottom: 3%;
         margin-left: 5%;
         width: 345px;
         max-width: 90%;

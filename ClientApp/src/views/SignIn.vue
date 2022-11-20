@@ -36,7 +36,7 @@
                                    color="rgba(30, 29, 29, 0.8)"
                                    dark
                                    x-large
-                                   style="margin-right:15px;"
+                                   style="margin-right: 15px; margin-bottom: 15px;"
                                    @click="comeIn()">
                                 Вход
                             </v-btn>
@@ -45,7 +45,8 @@
                                    color="rgba(30, 29, 29, 0.8)"
                                    dark
                                    x-large
-                                   @click="$router.push(`/SignUp`)">
+                                   @click="$router.push(`/SignUp`)"
+                                   style="margin-bottom: 15px;">
                                 Я новый пользователь
                             </v-btn>
                         </div>

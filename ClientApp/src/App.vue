@@ -88,7 +88,7 @@
 
     body, .wh100 {
         height: 100%;
-        overflow: hidden !important;
+        overflow: auto !important;
         width: 100%;
     }
 

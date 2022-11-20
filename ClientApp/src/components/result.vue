@@ -90,7 +90,7 @@
             loadPage() {
                 this.loaded = false
                 this.$http
-                    .get(this.$store.state.baseUrl + `api/result/getUserResults?email=` + this.$store.state.email + `&iteration=` + this.iteration)
+                    .get(this.$store.state.baseUrl + `api/result/getUserResults?iteration=` + this.iteration)
                     .then(response => {
                         this.results = response.data
                         this.loaded = true

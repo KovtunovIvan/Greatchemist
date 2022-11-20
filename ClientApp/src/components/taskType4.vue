@@ -6,26 +6,45 @@
                                  :size="70"></v-progress-circular>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && isTesting">
-            <img :src="`../images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
+            <img :src="`../assets/images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
             <div class="answerButtonsWrap">
-                <v-btn x-large
-                       color="#FFC702"
-                       class="answerButton"
-                       @click="addAnswer(1)">
-                    {{question.btn1}}
-                </v-btn>
-                <v-btn x-large
-                       color="#FFC702"
-                       class="answerButton"
-                       @click="addAnswer(2)">
-                    {{question.btn2}}
-                </v-btn>
-                <v-btn x-large
-                       color="#FFC702"
-                       class="answerButton"
-                       @click="addAnswer(3)">
-                    {{question.btn3}}
-                </v-btn>
+                <v-container>
+                    <v-row>
+                        <v-col cols="12"
+                               sm="6"
+                               md="6">
+                            <v-btn x-large
+                                   color="#FFC702"
+                                   class="answerButton"
+                                   @click="addAnswer(1)"
+                                   style="width:100%;">
+                                {{question.btn1}}
+                            </v-btn>
+                        </v-col>
+                        <v-col cols="12"
+                               sm="6"
+                               md="6">
+                            <v-btn x-large
+                                   color="#FFC702"
+                                   class="answerButton"
+                                   @click="addAnswer(2)"
+                                   style="width:100%;">
+                                {{question.btn2}}
+                            </v-btn>
+                        </v-col>
+                        <v-col cols="12"
+                               sm="6"
+                               md="6">
+                            <v-btn x-large
+                                   color="#FFC702"
+                                   class="answerButton"
+                                   @click="addAnswer(3)"
+                                   style="width:100%;">
+                                {{question.btn3}}
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+                </v-container>
             </div>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && !isTesting">
