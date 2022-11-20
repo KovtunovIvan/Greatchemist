@@ -7,13 +7,13 @@
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && isTesting">
             <p>Оставшееся время: {{commonTimeFunc}}</p>
-            <img :src="`../assets/images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
+            <img :src="`${publicPath}images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
             <div class="answerInputsWrap">
                 <v-textarea v-model.trim="userAnswer"
                             outlined
                             label="Ответ"></v-textarea>
             </div>
-            <div class="answerButtonsWrap">
+            <div style="width: 100%; display: flex; justify-content: center;">
                 <v-btn x-large
                        color="#FFC702"
                        class="answerButton"
@@ -71,6 +71,7 @@
             timer: 0,
             time: 0,
             stopTimer: false,
+            publicPath: process.env.BASE_URL,
         }),
 
         computed: {

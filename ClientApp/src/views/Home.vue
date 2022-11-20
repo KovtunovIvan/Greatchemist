@@ -33,7 +33,12 @@
         width: 100%;
         display: flex;
         flex-direction: column-reverse;
-        padding: 15% 0%;
+    }
+
+    @media screen and (orientation: portrait){
+        .buttonsWrap {
+            padding: 15% 0%;
+        }
     }
 
     .customBtn {
@@ -42,6 +47,7 @@
         border-radius: 26px;
         height: 85px;
         max-height: 10%;
+        min-height:55px;
         margin-bottom: 3%;
         margin-left: 5%;
         width: 345px;

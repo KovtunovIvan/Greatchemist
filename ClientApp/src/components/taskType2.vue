@@ -6,7 +6,7 @@
                                  :size="70"></v-progress-circular>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && isTesting">
-            <img :src="`../assets/images/` + question.questionLink" style="max-width: 100%; max-height: 60%;" />
+            <img :src="`${publicPath}images/` + question.questionLink" style="max-width: 100%; max-height: 60%;" />
             <div class="answerButtonsWrap2">
                 <v-container>
                     <v-row>
@@ -108,6 +108,7 @@
             commonCount: 0,
             rightCount: 0,
             loaded: false,
+            publicPath: process.env.BASE_URL,
         }),
 
         computed: {

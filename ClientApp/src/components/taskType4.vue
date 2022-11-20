@@ -6,13 +6,13 @@
                                  :size="70"></v-progress-circular>
         </div>
         <div style="position: relative;height:100%;" v-if="loaded && isTesting">
-            <img :src="`../assets/images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
+            <img :src="`${publicPath}images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
             <div class="answerButtonsWrap">
                 <v-container>
                     <v-row>
                         <v-col cols="12"
-                               sm="6"
-                               md="6">
+                               sm="4"
+                               md="4">
                             <v-btn x-large
                                    color="#FFC702"
                                    class="answerButton"
@@ -22,8 +22,8 @@
                             </v-btn>
                         </v-col>
                         <v-col cols="12"
-                               sm="6"
-                               md="6">
+                               sm="4"
+                               md="4">
                             <v-btn x-large
                                    color="#FFC702"
                                    class="answerButton"
@@ -33,8 +33,8 @@
                             </v-btn>
                         </v-col>
                         <v-col cols="12"
-                               sm="6"
-                               md="6">
+                               sm="4"
+                               md="4">
                             <v-btn x-large
                                    color="#FFC702"
                                    class="answerButton"
@@ -91,6 +91,7 @@
             commonCount: 0,
             rightCount: 0,
             loaded: false,
+            publicPath: process.env.BASE_URL,
         }),
 
         computed: {

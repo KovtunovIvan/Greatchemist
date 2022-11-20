@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="centarlPartWrapImgWrap">
-                        <img :src="`../assets/images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
+                        <img :src="`${publicPath}images/` + question.questionLink" style="max-width: 100%; max-height: 80%;" />
                     </div>
 
                     
@@ -105,7 +105,7 @@
             <p class="testText">Вы успешно завершили задание {{officialNumber}}</p>
             <p class="testText">Ваш резутат: {{rightCount}} из {{commonCount}}</p>
             <p class="testText">Затраченное время: {{timeFunc}}</p>
-            <div class="answerButtonsWrap">
+            <div style="width: 100%; display: flex; justify-content: center;">
                 <v-btn x-large
                        color="#FFC702"
                        class="answerButton"
@@ -145,6 +145,7 @@
             commonCount: 0,
             rightCount: 0,
             loaded: false,
+            publicPath: process.env.BASE_URL,
         }),
 
         computed: {
