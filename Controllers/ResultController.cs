@@ -47,7 +47,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType1withRightsExt> res1 = resType1.Where(a => a.Number == 1).ToList();
             UserResults1DTO newres1 = new UserResults1DTO();
-            if(res1.Count() == 2)
+            if(res1.Count() == 84)
             {
                 newres1.Number = res1[0].Number;
                 newres1.OfficialNumber = res1[0].OfficialNumber;
@@ -75,7 +75,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType1withRightsExt> res2 = resType1.Where(a => a.Number == 2).ToList();
             UserResults1DTO newres2 = new UserResults1DTO();
-            if (res2.Count() == 2)
+            if (res2.Count() == 84)
             {
                 newres2.Number = res2[0].Number;
                 newres2.OfficialNumber = res2[0].OfficialNumber;
@@ -103,7 +103,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType1withRightsExt> res3 = resType1.Where(a => a.Number == 3).ToList();
             UserResults1DTO newres3 = new UserResults1DTO();
-            if (res3.Count() == 2)
+            if (res3.Count() == 84)
             {
                 newres3.Number = res3[0].Number;
                 newres3.OfficialNumber = res3[0].OfficialNumber;
@@ -131,7 +131,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType1withRightsExt> res4 = resType1.Where(a => a.Number == 4).ToList();
             UserResults1DTO newres4 = new UserResults1DTO();
-            if (res4.Count() == 2)
+            if (res4.Count() == 84)
             {
                 newres4.Number = res4[0].Number;
                 newres4.OfficialNumber = res4[0].OfficialNumber;
@@ -159,7 +159,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType2withRightsExt> res5 = resType2.Where(a => a.Number == 5).ToList();
             UserResults1DTO newres5 = new UserResults1DTO();
-            if (res5.Count() == 2)
+            if (res5.Count() == 84)
             {
                 newres5.Number = res5[0].Number;
                 newres5.OfficialNumber = res5[0].OfficialNumber;
@@ -187,7 +187,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType3withRightsExt> res6 = resType3.Where(a => a.Number == 6).ToList();
             UserResults1DTO newres6 = new UserResults1DTO();
-            if (res6.Count() == 2)
+            if (res6.Count() == 84)
             {
                 newres6.Number = res6[0].Number;
                 newres6.OfficialNumber = res6[0].OfficialNumber;
@@ -215,7 +215,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType1withRightsExt> res7 = resType1.Where(a => a.Number == 7).ToList();
             UserResults1DTO newres7 = new UserResults1DTO();
-            if (res7.Count() == 2)
+            if (res7.Count() == 84)
             {
                 newres7.Number = res7[0].Number;
                 newres7.OfficialNumber = res7[0].OfficialNumber;
@@ -243,7 +243,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType4withRightsExt> res8 = resType4.Where(a => a.Number == 8).ToList();
             UserResults1DTO newres8 = new UserResults1DTO();
-            if (res8.Count() == 2)
+            if (res8.Count() == 84)
             {
                 newres8.Number = res8[0].Number;
                 newres8.OfficialNumber = res8[0].OfficialNumber;
@@ -271,7 +271,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType1withRightsExt> res9 = resType1.Where(a => a.Number == 9).ToList();
             UserResults1DTO newres9 = new UserResults1DTO();
-            if (res9.Count() == 2)
+            if (res9.Count() == 84)
             {
                 newres9.Number = res9[0].Number;
                 newres9.OfficialNumber = res9[0].OfficialNumber;
@@ -299,7 +299,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType1withRightsExt> res10 = resType1.Where(a => a.Number == 10).ToList();
             UserResults1DTO newres10 = new UserResults1DTO();
-            if (res10.Count() == 2)
+            if (res10.Count() == 84)
             {
                 newres10.Number = res10[0].Number;
                 newres10.OfficialNumber = res10[0].OfficialNumber;
@@ -327,7 +327,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType1withRightsExt> res11 = resType1.Where(a => a.Number == 11).ToList();
             UserResults1DTO newres11 = new UserResults1DTO();
-            if (res11.Count() == 2)
+            if (res11.Count() == 84)
             {
                 newres11.Number = res11[0].Number;
                 newres11.OfficialNumber = res11[0].OfficialNumber;
@@ -355,7 +355,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType4withRightsExt> res12 = resType4.Where(a => a.Number == 12).ToList();
             UserResults1DTO newres12 = new UserResults1DTO();
-            if (res12.Count() == 2)
+            if (res12.Count() == 84)
             {
                 newres12.Number = res12[0].Number;
                 newres12.OfficialNumber = res12[0].OfficialNumber;
@@ -383,7 +383,7 @@ namespace Tmp.Controllers
 
             List<UserAnswersType4withRightsExt> res13 = resType4.Where(a => a.Number == 13).ToList();
             UserResults1DTO newres13 = new UserResults1DTO();
-            if (res13.Count() == 2)
+            if (res13.Count() == 84)
             {
                 newres13.Number = res13[0].Number;
                 newres13.OfficialNumber = res13[0].OfficialNumber;
@@ -841,7 +841,7 @@ namespace Tmp.Controllers
                 System.IO.File.AppendAllText(path, appendText, Encoding.UTF8);
             }
 
-            appendText = appendText + Environment.NewLine;
+            appendText = Environment.NewLine;
             appendText = appendText + "Задание" + delimiter + "Время" + delimiter + "Ответ" + Environment.NewLine;
             System.IO.File.AppendAllText(path, appendText, Encoding.UTF8);
 
@@ -855,7 +855,7 @@ namespace Tmp.Controllers
                 System.IO.File.AppendAllText(path, appendText, Encoding.UTF8);
             }
 
-            appendText = appendText + Environment.NewLine;
+            appendText = Environment.NewLine;
             appendText = appendText + "Арифметический субтест" + delimiter + "Верно" + delimiter + "Время" + Environment.NewLine;
             System.IO.File.AppendAllText(path, appendText, Encoding.UTF8);
 

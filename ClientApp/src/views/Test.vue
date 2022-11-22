@@ -111,55 +111,55 @@
                 switch (this.$store.state.currentTask) {
                     case 1:
                         db = 'GetQuestionsType1'
-                        count = 1
+                        count = 42
                         break
                     case 2:
                         db = 'GetQuestionsType1'
-                        count = 1
+                        count = 42
                         break
                     case 3:
                         db = 'GetQuestionsType1'
-                        count = 1
+                        count = 42
                         break
                     case 4:
                         db = 'GetQuestionsType1'
-                        count = 1
+                        count = 42
                         break
                     case 5:
                         db = 'GetQuestionsType2'
-                        count = 1
+                        count = 42
                         break
                     case 6:
                         db = 'GetQuestionsType3'
-                        count = 1
+                        count = 42
                         break
                     case 7:
                         db = 'GetQuestionsType1'
-                        count = 1
+                        count = 42
                         break
                     case 8:
                         db = 'GetQuestionsType4'
-                        count = 1
+                        count = 42
                         break
                     case 9:
                         db = 'GetQuestionsType1'
-                        count = 1
+                        count = 42
                         break
                     case 10:
                         db = 'GetQuestionsType1'
-                        count = 1
+                        count = 42
                         break
                     case 11:
                         db = 'GetQuestionsType1'
-                        count = 1
+                        count = 42
                         break
                     case 12:
                         db = 'GetQuestionsType4'
-                        count = 1
+                        count = 42
                         break
                     case 13:
                         db = 'GetQuestionsType4'
-                        count = 1
+                        count = 42
                         break
                     case 14:
                         db = 'GetQuestionsType5'
