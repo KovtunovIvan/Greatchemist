@@ -6,7 +6,7 @@
                                     :size="70"></v-progress-circular>
         </div>
         <div v-else class="text-center">
-            <a href="../results.csv" download="GCResults">Скачать результаты</a>
+            <a href="../results.csv" download="GCResults" @click.prevent="download()">Скачать результаты</a>
             <table class="results">
                 <tr>
                     <td rowspan="2">Задание</td>
@@ -73,6 +73,24 @@
         },
 
         methods: {
+            download() {
+                this.loaded = false
+                this.$http
+                    .get(this.$store.state.baseUrl + `api/result/getUserResults?iteration=` + this.iteration + `&datetime=` + new Date().getMilliseconds())
+                    .then(response => {
+                        window.open('../results.csv')
+                        this.loaded = true
+                    })
+                    .catch(e => {
+                        this.$store.state.snackbarShow = false
+                        this.$store.state.snackbarColor = "#ff5252"
+                        this.$store.state.snackbarText = "Ошибка загрузки результатов"
+                        this.$store.state.snackbarShow = true
+
+                        console.log(e)
+                    });
+            },
+
             difTime(startTime, endTime) {
                 let dif = new Date(endTime) - new Date(startTime)
 
@@ -90,7 +108,7 @@
             loadPage() {
                 this.loaded = false
                 this.$http
-                    .get(this.$store.state.baseUrl + `api/result/getUserResults?iteration=` + this.iteration)
+                    .get(this.$store.state.baseUrl + `api/result/getUserResults?iteration=` + this.iteration + `&datetime=` + new Date().getMilliseconds())
                     .then(response => {
                         this.results = response.data
                         this.loaded = true
