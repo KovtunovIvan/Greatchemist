@@ -146,6 +146,7 @@
 </template>
 
 <script>
+    const emailCheckRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     export default {
         name: 'SignUp',
         data: () => ({
@@ -213,6 +214,8 @@
                     alert("Все поля, кроме примечания, обязательны для заполнения")
                 } else if (this.user.password1 != this.user.password2) {
                     alert("Пароли не совпадают")
+                } else if (!emailCheckRegex.test(this.user.email)) {
+                    alert("Введен неверный e-mail")
                 } else {
                     this.loaded = false
                     let a = new Date()

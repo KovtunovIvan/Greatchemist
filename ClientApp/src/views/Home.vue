@@ -1,6 +1,7 @@
 <template>
     <div class="buttonsWrap">
         <button class="customBtn" @click="$router.push(`/About`)">О сайте</button>
+        <button class="customBtn" @click="signOut" v-if="$store.state.isAuthorized">Выйти</button>
         <button class="customBtn" @click="$router.push(`/Groups`)" v-if="$store.state.isTeacher">Группы</button>
         <button class="customBtn" @click="$router.push(`/Admin`)" v-if="$store.state.isManager">Администрирование</button>
         <button class="customBtn" @click="$router.push(`/TeacherGroups`)" v-if="$store.state.isTeacher">Результаты учеников</button>
@@ -17,7 +18,9 @@
         data: () => ({}),
 
         methods: {
-            loadPage() {
+            loadPage() { },
+            signOut() {
+                window.location.reload();
             },
         },
 
